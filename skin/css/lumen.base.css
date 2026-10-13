@@ -25,28 +25,29 @@ body.lm-body {
   letter-spacing: var(--ls-tight);
   word-break: keep-all;
   overflow-wrap: anywhere;
+  font-variant-numeric: lining-nums; /* Cormorant 숫자를 라이닝 숫자로 */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding-bottom: var(--tabbar-h);
 }
 body.lm-body.is-locked { overflow: hidden; }
 
-.lm-body h1, .lm-body h2, .lm-body h3, .lm-body h4, .lm-body p,
-.lm-body ul, .lm-body ol, .lm-body dl, .lm-body dd, .lm-body figure { margin: 0; }
-.lm-body ul, .lm-body ol { padding: 0; list-style: none; }
-.lm-body h1, .lm-body h2, .lm-body h3, .lm-body h4 { font-weight: var(--fw-semibold); line-height: var(--lh-snug); }
-.lm-body img, .lm-body svg, .lm-body video { display: block; max-width: 100%; }
-.lm-body img { height: auto; }
-.lm-body a { color: inherit; text-decoration: none; }
-.lm-body button { font: inherit; color: inherit; letter-spacing: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
-.lm-body input, .lm-body select, .lm-body textarea { font: inherit; color: inherit; letter-spacing: inherit; }
-.lm-body table { border-collapse: collapse; border-spacing: 0; width: 100%; }
-.lm-body fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
-.lm-body legend { padding: 0; }
+/* 리셋은 :where()로 감싸 특이성을 0으로 유지 — 컴포넌트 클래스가 항상 우선합니다. */
+:where(.lm-body) :where(h1, h2, h3, h4, p, ul, ol, dl, dd, figure) { margin: 0; }
+:where(.lm-body) :where(ul, ol) { padding: 0; list-style: none; }
+:where(.lm-body) :where(h1, h2, h3, h4) { font-weight: var(--fw-semibold); line-height: var(--lh-snug); }
+:where(.lm-body) :where(img, svg, video) { display: block; max-width: 100%; }
+:where(.lm-body) img { height: auto; }
+:where(.lm-body) a { color: inherit; text-decoration: none; }
+:where(.lm-body) button { font: inherit; color: inherit; letter-spacing: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+:where(.lm-body) :where(input, select, textarea) { font: inherit; color: inherit; letter-spacing: inherit; }
+:where(.lm-body) table { border-collapse: collapse; border-spacing: 0; width: 100%; }
+:where(.lm-body) fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+:where(.lm-body) legend { padding: 0; }
 .lm-body [hidden] { display: none !important; }
 
 /* ---- Focus (키보드 접근성) ------------------------------------------------ */
-.lm-body :focus { outline: none; }
+.lm-body :focus:not(:focus-visible) { outline: none; }
 .lm-body :focus-visible {
   outline: 2px solid var(--c-focus);
   outline-offset: 2px;
@@ -95,11 +96,8 @@ body.lm-body.is-locked { overflow: hidden; }
 }
 .lm-text-sub { color: var(--c-sub); }
 .lm-text-accent { color: var(--c-accent); }
-.lm-hide-mo { display: none !important; }
-@media (min-width: 1024px) {
-  .lm-hide-mo { display: revert !important; }
-  .lm-hide-pc { display: none !important; }
-}
+@media (max-width: 1023px) { .lm-hide-mo { display: none !important; } }
+@media (min-width: 1024px) { .lm-hide-pc { display: none !important; } }
 
 /* ---- Buttons --------------------------------------------------------- */
 .lm-btn {
@@ -111,14 +109,13 @@ body.lm-body.is-locked { overflow: hidden; }
   text-align: center; white-space: nowrap;
   transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
 }
-.lm-body .lm-btn { color: var(--c-on-ink); }
 .lm-btn:hover { background: #2c2c2c; border-color: #2c2c2c; }
-.lm-body .lm-btn--line { background: transparent; color: var(--c-ink); }
-.lm-body .lm-btn--line:hover { background: var(--c-ink); color: var(--c-on-ink); }
-.lm-body .lm-btn--light { background: var(--c-bg); border-color: var(--c-bg); color: var(--c-ink); }
-.lm-body .lm-btn--light:hover { background: transparent; color: var(--c-on-ink); border-color: var(--c-on-ink); }
-.lm-body .lm-btn--accent { background: var(--c-accent); border-color: var(--c-accent); color: #fff; }
-.lm-body .lm-btn--accent:hover { background: #9c4526; border-color: #9c4526; }
+.lm-btn--line { background: transparent; color: var(--c-ink); }
+.lm-btn--line:hover { background: var(--c-ink); color: var(--c-on-ink); }
+.lm-btn--light { background: var(--c-bg); border-color: var(--c-bg); color: var(--c-ink); }
+.lm-btn--light:hover { background: transparent; color: var(--c-on-ink); border-color: var(--c-on-ink); }
+.lm-btn--accent { background: var(--c-accent); border-color: var(--c-accent); color: #fff; }
+.lm-btn--accent:hover { background: #9c4526; border-color: #9c4526; }
 .lm-btn--sm { min-height: 36px; padding: 0 14px; font-size: var(--fs-xs); }
 .lm-btn--lg { min-height: 56px; padding: 0 32px; font-size: var(--fs-md); }
 .lm-btn--block { display: flex; width: 100%; }

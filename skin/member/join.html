@@ -1,0 +1,95 @@
+<!--@layout(/layout/basic/layout.html)-->
+<!--
+    LUMEN — 회원가입 (정보 입력)
+    ─────────────────────────────────────────────────────────────
+    · 카페24 회원가입은 약관 동의(/member/agreement.html) → 정보 입력(이 페이지) 순서입니다.
+    · 입력 항목은 관리자 > 고객 > 회원 가입 항목 설정 에 따라 {$...|display} 로 노출/숨김됩니다.
+    · 필드가 많고 쇼핑몰마다 다르므로, 동작이 다르면 기본 스킨 member/join.html 의
+      <table> 행을 그대로 복사해 아래 lm-join__row 마크업으로 감싸 주세요.
+    ─────────────────────────────────────────────────────────────
+-->
+<div class="lm-container">
+    <header class="lm-page-head">
+        <h1 class="lm-page-head__title"><span class="lm-display">Join</span>회원가입</h1>
+        <p class="lm-page-head__desc">가입 즉시 사용할 수 있는 10% 할인 쿠폰을 드립니다.</p>
+    </header>
+
+    <!-- CHECK: form id/action 및 member_join 모듈 내부 {$form.*} 이름은 기본 스킨과 대조 -->
+    <form id="joinForm" name="joinForm" action="/exec/front/Member/join/" method="post" target="_self" class="lm-form lm-join">
+        <div module="member_join">
+            <!--
+                $act = join
+                $returnUrl = /member/join_result.html
+            -->
+            <section class="lm-join__section" aria-labelledby="lmJoinBasic">
+                <h2 id="lmJoinBasic">기본 정보 <small><span class="lm-text-accent">*</span> 필수 입력</small></h2>
+
+                <div class="lm-join__row">
+                    <label class="lm-label" for="member_id">아이디<span class="lm-req">*</span></label>
+                    <div>
+                        {$form.member_id}
+                        <p class="lm-help" id="idMsg">영문 소문자/숫자, 4~16자</p>
+                    </div>
+                </div>
+                <div class="lm-join__row">
+                    <label class="lm-label" for="passwd">비밀번호<span class="lm-req">*</span></label>
+                    <div>
+                        {$form.passwd}
+                        <p class="lm-help">영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 8~16자</p>
+                    </div>
+                </div>
+                <div class="lm-join__row">
+                    <label class="lm-label" for="user_passwd_confirm">비밀번호 확인<span class="lm-req">*</span></label>
+                    <div>{$form.user_passwd_confirm}<p class="lm-help" id="pwConfirmMsg"></p></div>
+                </div>
+                <div class="lm-join__row">
+                    <label class="lm-label" for="name">이름<span class="lm-req">*</span></label>
+                    <div>{$form.name}</div>
+                </div>
+                <div class="lm-join__row {$mobile_display|display}">
+                    <label class="lm-label" for="mobile1">휴대전화<span class="lm-req">*</span></label>
+                    <div class="lm-join__inline">{$form.mobile1} {$form.mobile2} {$form.mobile3}</div>
+                </div>
+                <div class="lm-join__row">
+                    <label class="lm-label" for="email1">이메일<span class="lm-req">*</span></label>
+                    <div>{$form.email1}<p class="lm-help" id="emailMsg"></p></div>
+                </div>
+                <div class="lm-join__row {$address_display|display}">
+                    <span class="lm-label">주소</span>
+                    <div style="display:grid;gap:8px">
+                        <div class="lm-join__inline">{$form.postcode1} <a href="#none" class="lm-btn lm-btn--sm lm-btn--line" onclick="{$action_find_zipcode}">우편번호</a></div>
+                        {$form.addr1}
+                        {$form.addr2}
+                    </div>
+                </div>
+            </section>
+
+            <section class="lm-join__section {$add_info_display|display}" aria-labelledby="lmJoinExtra">
+                <h2 id="lmJoinExtra">추가 정보 <small>선택</small></h2>
+                <div class="lm-join__row {$birthday_display|display}">
+                    <span class="lm-label">생년월일</span>
+                    <div class="lm-join__inline">{$form.birth_year} {$form.birth_month} {$form.birth_day}</div>
+                </div>
+                <div class="lm-join__row {$gender_display|display}">
+                    <span class="lm-label">성별</span>
+                    <div class="lm-join__inline">{$form.is_sex}</div>
+                </div>
+            </section>
+
+            <section class="lm-join__section" aria-labelledby="lmJoinAgree">
+                <h2 id="lmJoinAgree">수신 동의</h2>
+                <ul class="lm-join__agree">
+                    <li><label class="lm-check">{$form.is_sms} SMS 수신 동의 (선택)</label></li>
+                    <li><label class="lm-check">{$form.is_news_mail} 이메일 수신 동의 (선택)</label></li>
+                </ul>
+                <p class="lm-help" style="margin-top:12px">쇼핑몰에서 제공하는 신상품 소식 · 할인 정보를 받아보실 수 있습니다. 주문/배송 관련 안내는 수신 동의와 관계없이 발송됩니다.</p>
+            </section>
+
+            <div style="display:grid;gap:8px;padding-top:12px">
+                <a href="#none" class="lm-btn lm-btn--lg lm-btn--block" onclick="{$action_join}">가입하기</a><!-- CHECK: 가입 실행 onclick (기본 스킨은 memberJoinAction() 등) -->
+                <a href="/" class="lm-btn lm-btn--line lm-btn--block">취소</a>
+            </div>
+        </div>
+    </form>
+    <div style="height:var(--section-gap)"></div>
+</div>

@@ -1,0 +1,101 @@
+<!--@layout(/layout/basic/layout.html)-->
+<!--
+    LUMEN — 상품 검색 결과
+    · product_search : 검색 폼(검색어 · 상세검색 조건)
+    · product_searchresult : 검색 결과 목록
+-->
+<div class="lm-container">
+    <header class="lm-page-head">
+        <h1 class="lm-page-head__title"><span class="lm-display">Search</span>상품 검색</h1>
+    </header>
+
+    <!-- CHECK: 검색 폼 모듈명(product_search)과 {$form.*} 필드명은 기본 스킨 product/search.html 과 대조하세요. -->
+    <form id="searchForm" name="" action="/product/search.html" method="get" target="_self" class="lm-form">
+        <div module="product_search">
+            <!--
+                $product_name_display = yes
+            -->
+            <div class="lm-searchpage__form" role="search">
+                <label class="lm-sr-only" for="keyword">검색어</label>
+                {$form.keyword}
+                <button type="submit" aria-label="검색"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-search"></use></svg></button>
+            </div>
+
+            <details class="lm-searchpage__detail">
+                <summary class="lm-label">상세 검색</summary>
+                <div class="lm-row"><span class="lm-label">상품분류</span>{$form.category_no}</div>
+                <div class="lm-row"><span class="lm-label">검색조건</span>{$form.search_type}</div>
+                <div class="lm-row"><span class="lm-label">판매가격대</span><span class="lm-join__inline">{$form.product_price1} ~ {$form.product_price2}</span></div>
+                <div class="lm-row"><span class="lm-label">정렬</span>{$form.order_by}</div>
+                <div class="lm-row"><span></span><button type="submit" class="lm-btn lm-btn--sm">검색</button></div>
+            </details>
+        </div>
+    </form>
+
+    <div module="product_searchresult">
+        <!--
+            $count = 24
+            $basket_result = /product/add_basket.html
+            $basket_option = /product/basket_option.html
+        -->
+        <p class="lm-searchpage__result">총 <strong>{$search_count}</strong>개의 상품이 검색되었습니다.</p><!-- CHECK: 검색 결과 수 변수 -->
+        <ul class="lm-grid">
+            <li id="anchorBoxId_{$product_no}">
+                <div class="lm-card">
+                    <div class="lm-card__thumb">
+                        <a class="lm-card__media" href="{$link_product_detail}" tabindex="-1" aria-hidden="true"><img src="{$image_medium}" id="eListPrdImage{$product_no}_{$list_num}" data-lm-hover-src="{$image_small}" alt="" loading="lazy"/></a>
+                        <div class="lm-card__badges">{$soldout_icon} {$new_icon} {$recommend_icon} {$product_icons}</div>
+                        <div class="lm-card__actions"><span class="lm-card__action">{$wish_icon}</span><span class="lm-card__action lm-hide-mo">{$basket_icon}</span></div>
+                    </div>
+                    <div class="lm-card__info">
+                        <div class="lm-chips">{$color_chip}</div>
+                        <p class="lm-card__name"><a href="{$link_product_detail}">{$product_name}</a></p>
+                        <div class="lm-card__price-row">
+                            <span class="lm-price__rate" data-lm-rate data-price="{$product_price}" data-origin="{$product_custom}"></span>
+                            <ul module="product_ListItem" class="lm-card__items">
+                                <li class="{$item_display|display}"><strong class="title {$item_title_display|display}">{$item_title}</strong> {$item_content}</li>
+                                <li class="{$item_display|display}"><strong class="title {$item_title_display|display}">{$item_title}</strong> {$item_content}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li id="anchorBoxId_{$product_no}">
+                <div class="lm-card">
+                    <div class="lm-card__thumb">
+                        <a class="lm-card__media" href="{$link_product_detail}" tabindex="-1" aria-hidden="true"><img src="{$image_medium}" id="eListPrdImage{$product_no}_{$list_num}" data-lm-hover-src="{$image_small}" alt="" loading="lazy"/></a>
+                        <div class="lm-card__badges">{$soldout_icon} {$new_icon} {$recommend_icon} {$product_icons}</div>
+                        <div class="lm-card__actions"><span class="lm-card__action">{$wish_icon}</span><span class="lm-card__action lm-hide-mo">{$basket_icon}</span></div>
+                    </div>
+                    <div class="lm-card__info">
+                        <div class="lm-chips">{$color_chip}</div>
+                        <p class="lm-card__name"><a href="{$link_product_detail}">{$product_name}</a></p>
+                        <div class="lm-card__price-row">
+                            <span class="lm-price__rate" data-lm-rate data-price="{$product_price}" data-origin="{$product_custom}"></span>
+                            <ul module="product_ListItem" class="lm-card__items">
+                                <li class="{$item_display|display}"><strong class="title {$item_title_display|display}">{$item_title}</strong> {$item_content}</li>
+                                <li class="{$item_display|display}"><strong class="title {$item_title_display|display}">{$item_title}</strong> {$item_content}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- 검색 결과 없음 — CHECK: 결과 없음 표시는 기본 스킨의 조건 클래스({$...|display})를 확인 -->
+    <div class="lm-empty displaynone" module="product_searchresult_empty">
+        <svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-search"></use></svg>
+        <p>검색 결과가 없습니다.<br/>검색어의 철자나 띄어쓰기를 확인해 주세요.</p>
+    </div>
+
+    <nav class="lm-paging" module="product_searchpaging" aria-label="페이지">
+        <a class="lm-paging__arrow" href="{$param_before}" aria-label="이전 페이지"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-chevron-left"></use></svg></a>
+        <ol>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+        </ol>
+        <a class="lm-paging__arrow" href="{$param_next}" aria-label="다음 페이지"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-chevron-right"></use></svg></a>
+    </nav>
+    <div style="height:var(--section-gap)"></div>
+</div>

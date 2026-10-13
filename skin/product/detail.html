@@ -1,0 +1,261 @@
+<!--@layout(/layout/basic/layout.html)-->
+<!--
+    LUMEN — 상품 상세
+    ─────────────────────────────────────────────────────────────
+    구성: 좌 갤러리(대표+추가이미지) / 우 sticky 구매박스 → 하단 탭(상세정보 · 구매안내 · 리뷰 · Q&A)
+          → 관련상품 → 모바일 하단 고정 구매바
+
+    ⚠ 상세 페이지는 옵션 · 수량 · 총 금액 · 구매 버튼 스크립트가 카페24 기본 스킨 구조
+      (xans-product-option / totalProducts / totalPrice / product_action)에 강하게 묶여 있습니다.
+      옵션이 정상 동작하지 않으면 "기본 스킨 product/detail.html 의 해당 영역을 그대로 복사"해
+      아래 [MERGE] 표시 위치에 붙여 넣고, LUMEN 클래스(lm-buy__*)만 감싸 주세요.
+    ─────────────────────────────────────────────────────────────
+-->
+<div class="lm-container">
+    <div module="product_detail">
+        <!--
+            $coupon_download_page = /coupon/coupon_productdetail.html
+        -->
+        <nav class="lm-detail__crumb" aria-label="현재 위치">
+            <!-- CHECK: 상세의 경로 모듈명(product_headcategory)과 변수 확인 -->
+            <ol class="lm-breadcrumb" module="product_headcategory">
+                <li><a href="/">홈</a></li>
+                <li><a href="{$link_category}">{$name_or_img_tag}</a></li>
+                <li><a href="{$link_category}">{$name_or_img_tag}</a></li>
+            </ol>
+        </nav>
+
+        <div class="lm-detail">
+            <!-- ============ 갤러리 ============ -->
+            <section class="lm-gallery" data-lm-gallery aria-label="상품 이미지">
+                <div class="lm-gallery__main">
+                    <!-- CHECK: 대표 이미지 변수 {$big_img} / 클래스 BigImage (카페24 옵션 이미지 전환 스크립트가 참조) -->
+                    <img src="{$big_img}" alt="{$name}" class="BigImage" data-lm-gallery-main/>
+                    <button type="button" class="lm-gallery__nav lm-gallery__nav--prev lm-hide-pc" data-lm-gallery-prev aria-label="이전 이미지"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-chevron-left"></use></svg></button>
+                    <button type="button" class="lm-gallery__nav lm-gallery__nav--next lm-hide-pc" data-lm-gallery-next aria-label="다음 이미지"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-chevron-right"></use></svg></button>
+                    <span class="lm-gallery__count" data-lm-gallery-count aria-hidden="true"></span>
+                </div>
+                <!-- 추가 이미지: lumen.js 가 각 <img> 를 썸네일 버튼으로 감쌉니다.
+                     대표 이미지를 첫 썸네일로 쓰려면 첫 <li> 를 그대로 두세요. -->
+                <div class="lm-gallery__thumbs">
+                    <button type="button" class="lm-gallery__thumb" data-lm-gallery-thumb data-src="{$big_img}" aria-label="대표 이미지 보기"><img src="{$big_img}" alt=""/></button>
+                    <ul module="product_addimage" style="display:contents">
+                        <li style="display:contents"><img src="{$image_small}" data-big="{$image_big}" class="ThumbImage" alt=""/></li>
+                        <li style="display:contents"><img src="{$image_small}" data-big="{$image_big}" class="ThumbImage" alt=""/></li>
+                    </ul>
+                    <!-- CHECK: product_addimage 의 큰 이미지 변수명({$image_big})과 썸네일 클릭 시 기본 스크립트 동작 확인 -->
+                </div>
+            </section>
+
+            <!-- ============ 구매 박스 ============ -->
+            <section class="lm-buy" id="lmBuy" aria-labelledby="lmProductName">
+                <div class="lm-buy__badges">{$icon_new} {$icon_recommend} {$icons}</div><!-- CHECK: 상세 아이콘 변수명 -->
+                <h1 class="lm-buy__name" id="lmProductName">{$name}</h1>
+                <p class="lm-buy__en">{$eng_name}</p><!-- CHECK: 영문 상품명 변수. 없으면 이 줄 삭제 -->
+                <p class="lm-buy__summary">{$summary_desc}</p><!-- CHECK: 상품 요약설명 변수 -->
+
+                <!-- 판매가 · 소비자가 · 할인율 -->
+                <div class="lm-buy__price">
+                    <p class="lm-price">
+                        <span class="lm-price__rate" data-lm-rate data-price="{$product_price}" data-origin="{$product_custom}"></span>
+                        <strong class="lm-price__sale" id="span_product_price_text">{$product_price}</strong>
+                        <del class="lm-price__origin {$product_custom_display|display}">{$product_custom}</del>
+                    </p>
+                    <!-- 쿠폰 다운로드 (쿠폰이 있을 때만) -->
+                    <div class="lm-buy__coupon {$coupon_download_display|display}"><span>이 상품에 사용할 수 있는 쿠폰이 있어요</span><a href="#none" onclick="{$action_coupon_download}">쿠폰 받기</a></div>
+                </div>
+
+                <!-- 상품 정보 표(관리자 '상품 정보 표시 설정' 항목) -->
+                <div module="product_detaildesign" class="lm-buy__info-wrap">
+                    <table class="lm-buy__table">
+                        <caption class="lm-sr-only">기본 정보</caption>
+                        <tbody>
+                            <tr class="{$item_display|display}"><th scope="row">{$item_title}</th><td>{$item_content}</td></tr>
+                            <tr class="{$item_display|display}"><th scope="row">{$item_title}</th><td>{$item_content}</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- [MERGE] 옵션 영역 시작 ─ 기본 스킨의 옵션 테이블을 그대로 사용 권장 -->
+                <div class="lm-buy__opts">
+                    <!-- CHECK: 옵션 모듈 구조. 카페24는 아래 표 구조에서 select 를 생성합니다. -->
+                    <table class="lm-buy__table xans-product-option {$option_display|display}">
+                        <caption class="lm-sr-only">상품 옵션</caption>
+                        <tbody module="product_option">
+                            <tr><th scope="row" class="lm-buy__opt-label">{$option_name}</th><td>{$form.option_value}</td></tr>
+                            <tr><th scope="row" class="lm-buy__opt-label">{$option_name}</th><td>{$form.option_value}</td></tr>
+                        </tbody>
+                    </table>
+
+                    <!-- 선택한 옵션 목록 / 수량 (카페24 스크립트가 #totalProducts 에 행을 추가) -->
+                    <div id="totalProducts" class="lm-buy__selected {$total_display|display}" aria-live="polite">
+                        <table class="lm-buy__table">
+                            <caption class="lm-sr-only">선택한 상품</caption>
+                            <tbody class="{$quantity_display|display}">
+                                <tr>
+                                    <td>{$quantity_prd_name}</td>
+                                    <td>
+                                        <span class="lm-qty lm-qty--sm">
+                                            {$form.quantity}
+                                            <a href="#none" class="up QuantityUp" aria-label="수량 증가"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-plus"></use></svg></a>
+                                            <a href="#none" class="down QuantityDown" aria-label="수량 감소"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-minus"></use></svg></a>
+                                        </span>
+                                    </td>
+                                    <td class="lm-buy__line-price">{$product_price}</td>
+                                </tr>
+                            </tbody>
+                            <tbody class="option_products"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- [MERGE] 옵션 영역 끝 -->
+
+                <div id="totalPrice" class="lm-buy__total totalPrice">
+                    <span>총 상품금액</span>
+                    <strong class="total"><em>0</em></strong>
+                </div>
+
+                <!-- 구매 버튼 -->
+                <div module="product_action" class="lm-buy__actions">
+                    <a href="#none" class="lm-btn lm-btn--line {$btn_basket_display|display}" onclick="{$action_basket}">장바구니</a>
+                    <a href="#none" class="lm-btn {$btn_buy_display|display}" onclick="{$action_buy}"><span id="btnBuy">바로 구매</span><span id="btnReserve" class="displaynone">예약 주문</span></a>
+                    <a href="#none" class="lm-btn lm-btn--line lm-btn--icon lm-buy__wish" onclick="{$action_wishlist}" aria-label="관심상품 담기"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-heart"></use></svg></a>
+                </div>
+                <!-- 간편결제(네이버페이 등) 버튼 자리 — CHECK: 기본 스킨의 #NaverChk_Button / 간편결제 영역을 이곳에 복사 -->
+                <div class="lm-buy__pay" id="appPaymentButtonBox"></div>
+
+                <div class="lm-buy__notice">
+                    <span><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-truck"></use></svg>5만원 이상 무료배송</span>
+                    <span><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-refresh"></use></svg>7일 이내 교환·반품</span>
+                </div>
+
+                <div class="lm-accordion">
+                    <div class="lm-accordion__item">
+                        <button type="button" class="lm-accordion__btn" aria-expanded="false" aria-controls="lmAcc1" data-lm-accordion>상품 정보 고시<svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-plus"></use></svg></button>
+                        <div class="lm-accordion__panel" id="lmAcc1">
+                            <!-- CHECK: 상품정보제공고시 모듈/변수. 없으면 직접 작성 -->
+                            <div module="product_additional">{$product_info_notice}</div>
+                        </div>
+                    </div>
+                    <div class="lm-accordion__item">
+                        <button type="button" class="lm-accordion__btn" aria-expanded="false" aria-controls="lmAcc2" data-lm-accordion>배송 · 교환 · 반품<svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-plus"></use></svg></button>
+                        <div class="lm-accordion__panel" id="lmAcc2">평균 1~3일 소요됩니다. 상품 수령 후 7일 이내 교환·반품 신청이 가능합니다.</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<!-- ============ 상세 탭 (스크롤 이동 + 현재 위치 표시) ============ -->
+<nav class="lm-dtabs" aria-label="상품 상세 메뉴" data-lm-spy>
+    <div class="lm-container">
+        <ul class="lm-dtabs__list">
+            <li><a class="lm-dtabs__link" href="#lmDetailInfo">상세정보</a></li>
+            <li><a class="lm-dtabs__link" href="#lmGuide">구매안내</a></li>
+            <li><a class="lm-dtabs__link" href="#lmReview">리뷰</a></li>
+            <li><a class="lm-dtabs__link" href="#lmQna">Q&amp;A</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="lm-container">
+    <!-- 상세정보 (상품 등록 시 작성한 상세설명 에디터 내용) -->
+    <section class="lm-dsection" id="lmDetailInfo" aria-label="상세정보">
+        <div class="lm-dcontent" module="product_additional">
+            <!-- CHECK: 상세설명 변수 {$product_detail} -->
+            {$product_detail}
+        </div>
+    </section>
+
+    <!-- 구매안내 (관리자 > 상점관리 > 운영관리 > 이용안내 설정 값) -->
+    <section class="lm-dsection" id="lmGuide" aria-labelledby="lmGuideTitle">
+        <h2 class="lm-dsection__title" id="lmGuideTitle">구매안내</h2>
+        <!-- CHECK: 결제/배송/교환/환불 안내 변수명 -->
+        <div class="lm-guide" module="product_additional">
+            <section><h4>결제 안내</h4><div>{$pay_info}</div></section>
+            <section><h4>배송 안내</h4><div>{$delivery_info}</div></section>
+            <section><h4>교환 · 반품 안내</h4><div>{$exchange_info}</div></section>
+            <section><h4>서비스 문의</h4><div>{$service_info}</div></section>
+        </div>
+    </section>
+
+    <!-- 리뷰 (상품 사용후기 게시판 board_no=4) -->
+    <section class="lm-dsection lm-review" id="lmReview" aria-labelledby="lmReviewTitle">
+        <h2 class="lm-dsection__title" id="lmReviewTitle">리뷰</h2>
+        <!-- CHECK: 상세 내 후기 목록 모듈명. 기본 스킨은 상품 후기 게시판을 별도 모듈(예: board_productlist_4)로 출력합니다.
+                    리뷰 앱(크리마·브이리뷰 등)을 쓰는 경우 이 영역에 앱 위젯 코드를 넣으세요. -->
+        <table class="lm-table lm-table--stack">
+            <caption class="lm-sr-only">상품 리뷰 목록</caption>
+            <thead><tr><th scope="col" class="lm-table__no">번호</th><th scope="col">제목</th><th scope="col">작성자</th><th scope="col">작성일</th><th scope="col">평점</th></tr></thead>
+            <tbody module="board_productlist_4">
+                <tr><td class="lm-table__no">{$no}</td><td class="lm-table__subject"><a href="{$link_board_detail}">{$subject}</a></td><td>{$writer}</td><td>{$write_date}</td><td>{$point_icon}</td></tr>
+                <tr><td class="lm-table__no">{$no}</td><td class="lm-table__subject"><a href="{$link_board_detail}">{$subject}</a></td><td>{$writer}</td><td>{$write_date}</td><td>{$point_icon}</td></tr>
+            </tbody>
+        </table>
+        <div class="lm-board-btns">
+            <a class="lm-btn lm-btn--sm lm-btn--line" href="/board/product/list.html?board_no=4">전체보기</a>
+            <a class="lm-btn lm-btn--sm" href="/board/product/write.html?board_no=4">리뷰 작성</a>
+        </div>
+    </section>
+
+    <!-- Q&A (상품 Q&A 게시판 board_no=6) -->
+    <section class="lm-dsection" id="lmQna" aria-labelledby="lmQnaTitle">
+        <h2 class="lm-dsection__title" id="lmQnaTitle">Q&amp;A</h2>
+        <!-- CHECK: 상세 내 Q&A 목록 모듈명 (board_productlist_6) -->
+        <table class="lm-table lm-table--stack">
+            <caption class="lm-sr-only">상품 Q&amp;A 목록</caption>
+            <thead><tr><th scope="col" class="lm-table__no">번호</th><th scope="col">제목</th><th scope="col">작성자</th><th scope="col">작성일</th></tr></thead>
+            <tbody module="board_productlist_6">
+                <tr><td class="lm-table__no">{$no}</td><td class="lm-table__subject"><a href="{$link_board_detail}">{$lock_icon} {$subject}</a></td><td>{$writer}</td><td>{$write_date}</td></tr>
+                <tr><td class="lm-table__no">{$no}</td><td class="lm-table__subject"><a href="{$link_board_detail}">{$lock_icon} {$subject}</a></td><td>{$writer}</td><td>{$write_date}</td></tr>
+            </tbody>
+        </table>
+        <div class="lm-board-btns">
+            <a class="lm-btn lm-btn--sm lm-btn--line" href="/board/product/list.html?board_no=6">전체보기</a>
+            <a class="lm-btn lm-btn--sm" href="/board/product/write.html?board_no=6">문의하기</a>
+        </div>
+    </section>
+
+    <!-- 관련 상품 -->
+    <section class="lm-related" aria-labelledby="lmRelatedTitle">
+        <div class="lm-section__head">
+            <h2 class="lm-section__title" id="lmRelatedTitle">You May Also Like<small>함께 보면 좋은 상품</small></h2>
+        </div>
+        <!-- CHECK: 관련상품 모듈명(product_relation) 및 변수 -->
+        <div module="product_relation">
+            <!--
+                $count = 4
+            -->
+            <ul class="lm-grid">
+                <li>
+                    <div class="lm-card">
+                        <div class="lm-card__thumb"><a class="lm-card__media" href="{$link_product_detail}" tabindex="-1" aria-hidden="true"><img src="{$image_medium}" alt="" loading="lazy"/></a></div>
+                        <div class="lm-card__info">
+                            <p class="lm-card__name"><a href="{$link_product_detail}">{$product_name}</a></p>
+                            <p class="lm-price"><strong class="lm-price__sale">{$product_price}</strong></p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="lm-card">
+                        <div class="lm-card__thumb"><a class="lm-card__media" href="{$link_product_detail}" tabindex="-1" aria-hidden="true"><img src="{$image_medium}" alt="" loading="lazy"/></a></div>
+                        <div class="lm-card__info">
+                            <p class="lm-card__name"><a href="{$link_product_detail}">{$product_name}</a></p>
+                            <p class="lm-price"><strong class="lm-price__sale">{$product_price}</strong></p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <div style="height:var(--section-gap)"></div>
+</div>
+
+<!-- ============ 모바일 하단 고정 구매바 ============
+     구매하기를 누르면 구매박스(옵션)로 이동합니다. 하단 탭바는 이 페이지에서 자동으로 숨겨집니다. -->
+<div class="lm-buybar" role="region" aria-label="구매하기">
+    <a href="#none" class="lm-btn lm-btn--line lm-btn--icon" module="product_action" onclick="{$action_wishlist}" aria-label="관심상품 담기"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-heart"></use></svg></a>
+    <a class="lm-btn lm-btn--line" href="#lmBuy">장바구니</a>
+    <a class="lm-btn" href="#lmBuy">구매하기</a>
+</div>

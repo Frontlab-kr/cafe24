@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 700" width="1600" height="700" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="skyh2" x1="0" y1="0" x2="1" y2=".6">
+      <stop offset="0" stop-color="#7C8273"/><stop offset="1" stop-color="#4F5549"/>
+    </linearGradient>
+    <linearGradient id="shadeh2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fff" stop-opacity=".14"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".16"/>
+    </linearGradient>
+    <radialGradient id="sunh2" cx=".66" cy=".3" r=".55">
+      <stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="beamh2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity=".16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="blurh2" x="-20%" y="-200%" width="140%" height="500%"><feGaussianBlur stdDeviation="14"/></filter>
+  </defs>
+  <rect width="1600" height="700" fill="url(#skyh2)"/>
+  <circle cx="1010" cy="250" r="210" fill="#959B89" opacity=".55"/><rect x="1180" y="120" width="140" height="440" fill="#6A705F"/>
+  <path d="M520,0 L760,0 L1240,700 L1000,700 Z" fill="url(#beamh2)"/>
+  <rect x="0" y="560" width="1600" height="140" fill="#43483E"/>
+  <rect x="0" y="559" width="1600" height="2" fill="#000" opacity=".08"/>
+  <ellipse cx="1030" cy="584" rx="320" ry="14" fill="#000" opacity=".3" filter="url(#blurh2)"/>
+  <g transform="translate(800 210) scale(0.9)"><path d="M110,330 L290,330 Q298,330 298,340 L298,410 L102,410 L102,340 Q102,330 110,330 Z" fill="#E6DCCB"/>
+    <path d="M110,330 L290,330 Q298,330 298,340 L298,410 L102,410 L102,340 Q102,330 110,330 Z" fill="url(#shadeh2)"/>
+    <path d="M110,330 L290,330 Q298,330 298,340 L298,410 L102,410 L102,340 Q102,330 110,330 Z" fill="none" stroke="#CAC1B2" stroke-width="1.2"/>
+    <path d="M118,262 L282,262 Q290,262 290,272 L290,330 L110,330 L110,272 Q110,262 118,262 Z" fill="#EAE2D4"/>
+    <path d="M118,262 L282,262 Q290,262 290,272 L290,330 L110,330 L110,272 Q110,262 118,262 Z" fill="url(#shadeh2)"/>
+    <path d="M118,262 L282,262 Q290,262 290,272 L290,330 L110,330 L110,272 Q110,262 118,262 Z" fill="none" stroke="#CAC1B2" stroke-width="1.2"/>
+    <path d="M126,200 L274,200 Q282,200 282,210 L282,262 L118,262 L118,210 Q118,200 126,200 Z" fill="#CFC6B6"/>
+    <path d="M126,200 L274,200 Q282,200 282,210 L282,262 L118,262 L118,210 Q118,200 126,200 Z" fill="url(#shadeh2)"/>
+    <path d="M126,200 L274,200 Q282,200 282,210 L282,262 L118,262 L118,210 Q118,200 126,200 Z" fill="none" stroke="#CAC1B2" stroke-width="1.2"/>
+    <path d="M120,236 L280,236" fill="none" stroke="#B8B0A2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
+    <path d="M112,300 L288,300" fill="none" stroke="#B8B0A2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
+    <path d="M104,374 L296,374" fill="none" stroke="#B8B0A2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/></g><g transform="translate(1040 340) scale(0.55)"><path d="M140,250 L260,250 L260,410 L140,410 Z" fill="#EFE8DB"/>
+    <path d="M140,250 L260,250 L260,410 L140,410 Z" fill="url(#shadeh2)"/>
+    <path d="M140,250 L260,250 L260,410 L140,410 Z" fill="none" stroke="#D2CCC0" stroke-width="1.2"/>
+    <path d="M140,250 A60,16 0 0 0 260,250 A60,16 0 0 0 140,250 Z" fill="#F3EEE5"/>
+    <path d="M140,250 A60,16 0 0 0 260,250 A60,16 0 0 0 140,250 Z" fill="url(#shadeh2)"/>
+    <path d="M140,250 A60,16 0 0 0 260,250 A60,16 0 0 0 140,250 Z" fill="none" stroke="#D2CCC0" stroke-width="1.2"/>
+    <path d="M200,250 L200,226" fill="none" stroke="#6F7564" stroke-width="2.4" stroke-linecap="round"/>
+    <path d="M200,180 C214,200 214,222 200,226 C186,222 186,200 200,180 Z" fill="#E0A458"/>
+    <path d="M140,300 L260,300" fill="none" stroke="#BFB9AF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/></g><g transform="translate(1150 150) scale(1.0)"><path d="M160,232 C160,128 240,128 240,232" fill="none" stroke="#2F2E2C" stroke-width="9" stroke-linecap="round"/>
+    <path d="M120,228 L280,228 L292,414 L108,414 Z" fill="#2F2E2C"/>
+    <path d="M120,228 L280,228 L292,414 L108,414 Z" fill="url(#shadeh2)"/>
+    <path d="M120,262 L280,262" fill="none" stroke="#21211F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/></g>
+  <rect width="1600" height="700" fill="url(#sunh2)"/>
+</svg>

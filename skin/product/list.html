@@ -1,0 +1,175 @@
+<!--@layout(/layout/basic/layout.html)-->
+<!--
+    LUMEN — 상품 목록 (분류 페이지)
+    · product_menupackage : 분류명 · 하위 분류 · 경로
+    · product_normalpackage : 상품 수 · 정렬 · 일반 상품 목록 · 페이징
+    · 열 수는 css/lumen.variables.css 의 --grid-cols (모바일 2 / 태블릿 3 / PC 4)
+-->
+<div class="lm-container">
+
+    <!-- 분류 상단 -->
+    <div module="product_menupackage">
+        <header class="lm-list-head">
+            <!-- CHECK: 경로(브레드크럼) 모듈명과 변수({$link_category}, {$name_or_img_tag})를 기본 스킨과 대조 -->
+            <ol class="lm-breadcrumb" module="product_headcategory" aria-label="현재 위치">
+                <li><a href="/">홈</a></li>
+                <li><a href="{$link_category}">{$name_or_img_tag}</a></li>
+                <li><a href="{$link_category}">{$name_or_img_tag}</a></li>
+            </ol>
+            <div module="product_headcategory">
+                <h1 class="lm-list-head__title">{$name_or_img_tag}</h1>
+            </div>
+            <nav aria-label="하위 분류">
+                <ul class="lm-subcate" module="product_displaycategory">
+                    <li><a href="/product/list.html{$param}">{$name}</a></li>
+                    <li><a href="/product/list.html{$param}">{$name}</a></li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+
+    <!-- 추천 상품 (분류 관리에서 '추천상품' 진열 시에만 출력) -->
+    <div module="product_listrecommend">
+        <!--
+            $count = 4
+            $basket_result = /product/add_basket.html
+            $basket_option = /product/basket_option.html
+        -->
+        <div class="lm-section__head">
+            <h2 class="lm-section__title">Recommended<small>추천 상품</small></h2>
+        </div>
+        <ul class="lm-grid" style="margin-bottom:var(--section-gap)">
+            <li id="anchorBoxId_{$product_no}">
+                <div class="lm-card">
+                    <div class="lm-card__thumb">
+                        <a class="lm-card__media" href="{$link_product_detail}" tabindex="-1" aria-hidden="true"><img src="{$image_medium}" id="eListPrdImage{$product_no}_{$list_num}" data-lm-hover-src="{$image_small}" alt="" loading="lazy"/></a>
+                        <div class="lm-card__badges">{$soldout_icon} {$new_icon} {$recommend_icon} {$product_icons}</div>
+                        <div class="lm-card__actions"><span class="lm-card__action">{$wish_icon}</span><span class="lm-card__action lm-hide-mo">{$basket_icon}</span></div>
+                    </div>
+                    <div class="lm-card__info">
+                        <div class="lm-chips">{$color_chip}</div>
+                        <p class="lm-card__name"><a href="{$link_product_detail}">{$product_name}</a></p>
+                        <div class="lm-card__price-row">
+                            <span class="lm-price__rate" data-lm-rate data-price="{$product_price}" data-origin="{$product_custom}"></span>
+                            <ul module="product_ListItem" class="lm-card__items">
+                                <li class="{$item_display|display}"><strong class="title {$item_title_display|display}">{$item_title}</strong> {$item_content}</li>
+                                <li class="{$item_display|display}"><strong class="title {$item_title_display|display}">{$item_title}</strong> {$item_content}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li id="anchorBoxId_{$product_no}">
+                <div class="lm-card">
+                    <div class="lm-card__thumb">
+                        <a class="lm-card__media" href="{$link_product_detail}" tabindex="-1" aria-hidden="true"><img src="{$image_medium}" id="eListPrdImage{$product_no}_{$list_num}" data-lm-hover-src="{$image_small}" alt="" loading="lazy"/></a>
+                        <div class="lm-card__badges">{$soldout_icon} {$new_icon} {$recommend_icon} {$product_icons}</div>
+                        <div class="lm-card__actions"><span class="lm-card__action">{$wish_icon}</span><span class="lm-card__action lm-hide-mo">{$basket_icon}</span></div>
+                    </div>
+                    <div class="lm-card__info">
+                        <div class="lm-chips">{$color_chip}</div>
+                        <p class="lm-card__name"><a href="{$link_product_detail}">{$product_name}</a></p>
+                        <div class="lm-card__price-row">
+                            <span class="lm-price__rate" data-lm-rate data-price="{$product_price}" data-origin="{$product_custom}"></span>
+                            <ul module="product_ListItem" class="lm-card__items">
+                                <li class="{$item_display|display}"><strong class="title {$item_title_display|display}">{$item_title}</strong> {$item_content}</li>
+                                <li class="{$item_display|display}"><strong class="title {$item_title_display|display}">{$item_title}</strong> {$item_content}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- 일반 상품 -->
+    <div module="product_normalpackage">
+        <div class="lm-toolbar" id="Product_ListMenu" module="product_normalmenu">
+            <p class="lm-toolbar__count">총 <strong>{$prd_count}</strong>개의 상품</p>
+            <div class="lm-toolbar__right">
+                <!-- 정렬: lumen.js 가 현재 주소의 cate_no 등을 유지한 채 sort_method 만 바꿔 줍니다.
+                     CHECK: sort_method 번호(5 신상품 / 6 인기 / 1 낮은가격 / 2 높은가격 / 7 리뷰)를 기본 스킨 정렬 메뉴와 대조하세요. -->
+                <ul class="lm-sort" aria-label="정렬">
+                    <li><a href="?sort_method=5#Product_ListMenu" data-lm-sort="5">신상품</a></li>
+                    <li><a href="?sort_method=6#Product_ListMenu" data-lm-sort="6">인기순</a></li>
+                    <li><a href="?sort_method=1#Product_ListMenu" data-lm-sort="1">낮은가격</a></li>
+                    <li><a href="?sort_method=2#Product_ListMenu" data-lm-sort="2">높은가격</a></li>
+                    <li><a href="?sort_method=7#Product_ListMenu" data-lm-sort="7">리뷰 많은순</a></li>
+                </ul>
+                <label class="lm-sr-only" for="lmSortSelect">정렬 선택</label>
+                <select id="lmSortSelect" class="lm-select lm-sort-select" data-lm-sort-select>
+                    <option value="5">신상품</option>
+                    <option value="6">인기순</option>
+                    <option value="1">낮은가격</option>
+                    <option value="2">높은가격</option>
+                    <option value="7">리뷰 많은순</option>
+                </select>
+            </div>
+        </div>
+
+        <div module="product_listnormal">
+            <!--
+                $count = 24
+                $basket_result = /product/add_basket.html
+                $basket_option = /product/basket_option.html
+            -->
+            <ul class="lm-grid">
+                <li id="anchorBoxId_{$product_no}">
+                    <div class="lm-card">
+                        <div class="lm-card__thumb">
+                            <a class="lm-card__media" href="{$link_product_detail}" name="anchorBoxName_{$product_no}" tabindex="-1" aria-hidden="true"><img src="{$image_medium}" id="eListPrdImage{$product_no}_{$list_num}" data-lm-hover-src="{$image_small}" alt="" loading="lazy"/></a>
+                            <div class="lm-card__badges">{$soldout_icon} {$new_icon} {$recommend_icon} {$product_icons}</div>
+                            <div class="lm-card__actions"><span class="lm-card__action">{$wish_icon}</span><span class="lm-card__action lm-hide-mo">{$basket_icon}</span></div>
+                        </div>
+                        <div class="lm-card__info">
+                            <div class="lm-chips">{$color_chip}</div>
+                            <p class="lm-card__name"><a href="{$link_product_detail}">{$product_name}</a></p>
+                            <div class="lm-card__price-row">
+                                <span class="lm-price__rate" data-lm-rate data-price="{$product_price}" data-origin="{$product_custom}"></span>
+                                <ul module="product_ListItem" class="lm-card__items">
+                                    <li class="{$item_display|display}"><strong class="title {$item_title_display|display}">{$item_title}</strong> {$item_content}</li>
+                                    <li class="{$item_display|display}"><strong class="title {$item_title_display|display}">{$item_title}</strong> {$item_content}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li id="anchorBoxId_{$product_no}">
+                    <div class="lm-card">
+                        <div class="lm-card__thumb">
+                            <a class="lm-card__media" href="{$link_product_detail}" name="anchorBoxName_{$product_no}" tabindex="-1" aria-hidden="true"><img src="{$image_medium}" id="eListPrdImage{$product_no}_{$list_num}" data-lm-hover-src="{$image_small}" alt="" loading="lazy"/></a>
+                            <div class="lm-card__badges">{$soldout_icon} {$new_icon} {$recommend_icon} {$product_icons}</div>
+                            <div class="lm-card__actions"><span class="lm-card__action">{$wish_icon}</span><span class="lm-card__action lm-hide-mo">{$basket_icon}</span></div>
+                        </div>
+                        <div class="lm-card__info">
+                            <div class="lm-chips">{$color_chip}</div>
+                            <p class="lm-card__name"><a href="{$link_product_detail}">{$product_name}</a></p>
+                            <div class="lm-card__price-row">
+                                <span class="lm-price__rate" data-lm-rate data-price="{$product_price}" data-origin="{$product_custom}"></span>
+                                <ul module="product_ListItem" class="lm-card__items">
+                                    <li class="{$item_display|display}"><strong class="title {$item_title_display|display}">{$item_title}</strong> {$item_content}</li>
+                                    <li class="{$item_display|display}"><strong class="title {$item_title_display|display}">{$item_title}</strong> {$item_content}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 상품이 없을 때 -->
+    <!-- CHECK: 빈 목록 안내는 기본 스킨에서 product_listnormal 의 {$...} 조건 또는 별도 모듈로 처리됩니다. 필요 시 추가하세요. -->
+
+    <!-- 페이징 -->
+    <nav class="lm-paging" module="product_normalpaging" aria-label="페이지">
+        <a class="lm-paging__arrow" href="{$param_before}" aria-label="이전 페이지"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-chevron-left"></use></svg></a>
+        <ol>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+        </ol>
+        <a class="lm-paging__arrow" href="{$param_next}" aria-label="다음 페이지"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-chevron-right"></use></svg></a>
+    </nav>
+
+    <div style="height:var(--section-gap)"></div>
+</div>

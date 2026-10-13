@@ -1,0 +1,62 @@
+<!--@layout(/layout/basic/layout.html)-->
+<!--
+    LUMEN — 마이쇼핑
+    · myshop_asyncbenefit / myshop_bankbook : 회원 등급 · 적립금 · 예치금 · 쿠폰
+    · myshop_orderstate : 주문 처리 현황 (최근 3개월)
+    CHECK: 마이쇼핑 모듈명(myshop_asyncbenefit, myshop_bankbook, myshop_orderstate)과 변수는
+           기본 스킨 myshop/index.html 과 반드시 대조하세요. 최신 스킨은 비동기(async) 모듈을 사용합니다.
+-->
+<div class="lm-container">
+    <header class="lm-page-head">
+        <h1 class="lm-page-head__title"><span class="lm-display">My Page</span>마이쇼핑</h1>
+    </header>
+
+    <!-- 인사 + 혜택 -->
+    <div class="lm-my__hello">
+        <div module="myshop_asyncbenefit">
+            <span class="lm-my__grade">{$group_name}</span>
+            <h2><strong>{$name}</strong>님, 반갑습니다.</h2>
+            <p>{$group_name} 등급 혜택: {$dc_info}</p>
+        </div>
+        <div class="lm-my__assets" module="myshop_bankbook">
+            <a href="/myshop/mileage/historyList.html"><span>가용 적립금</span><strong>{$avail_mileage}</strong></a>
+            <a href="/myshop/deposits/historyList.html"><span>예치금</span><strong>{$deposit}</strong></a>
+            <a href="/myshop/coupon/coupon.html"><span>쿠폰</span><strong>{$coupon_cnt}개</strong></a>
+            <a href="/myshop/mileage/historyList.html"><span>총 적립금</span><strong>{$total_mileage}</strong></a>
+        </div>
+    </div>
+
+    <!-- 주문 처리 현황 -->
+    <section class="lm-my__block" aria-labelledby="lmMyOrder">
+        <h3 id="lmMyOrder">주문 처리 현황 <a href="/myshop/order/list.html">최근 3개월 · 전체보기</a></h3>
+        <div module="myshop_orderstate">
+            <ol class="lm-my__flow">
+                <li><a href="/myshop/order/list.html?order_status=shipped_before"><strong>{$shipped_before_count}</strong><span>입금전</span></a></li>
+                <li><a href="/myshop/order/list.html?order_status=shipped_standby"><strong>{$shipped_standby_count}</strong><span>배송준비중</span></a></li>
+                <li><a href="/myshop/order/list.html?order_status=shipped_begin"><strong>{$shipped_begin_count}</strong><span>배송중</span></a></li>
+                <li><a href="/myshop/order/list.html?order_status=shipped_complate"><strong>{$shipped_complate_count}</strong><span>배송완료</span></a></li>
+            </ol>
+            <p class="lm-my__cs">
+                <span>취소<b>{$order_cancel_count}</b></span>
+                <span>교환<b>{$order_exchange_count}</b></span>
+                <span>반품<b>{$order_return_count}</b></span>
+            </p>
+        </div>
+    </section>
+
+    <!-- 메뉴 -->
+    <section class="lm-my__block" aria-labelledby="lmMyMenu">
+        <h3 id="lmMyMenu">쇼핑 정보</h3>
+        <ul class="lm-my__menu">
+            <li><a href="/myshop/order/list.html"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-box"></use></svg><strong>주문 내역 조회</strong><span>주문 · 배송 · 취소/교환/반품</span></a></li>
+            <li><a href="/member/modify.html"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-user"></use></svg><strong>회원 정보</strong><span>개인정보 · 비밀번호 변경</span></a></li>
+            <li><a href="/myshop/wish_list.html"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-heart"></use></svg><strong>관심 상품</strong><span>찜한 상품 모아보기</span></a></li>
+            <li><a href="/myshop/coupon/coupon.html"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-coupon"></use></svg><strong>쿠폰</strong><span>보유 쿠폰 확인</span></a></li>
+            <li><a href="/myshop/mileage/historyList.html"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-star"></use></svg><strong>적립금</strong><span>적립 · 사용 내역</span></a></li>
+            <li><a href="/myshop/board_list.html"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-edit"></use></svg><strong>게시물 관리</strong><span>작성한 리뷰 · 문의</span></a></li>
+            <li><a href="/myshop/addr/list.html"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-home"></use></svg><strong>배송 주소록</strong><span>자주 쓰는 배송지 관리</span></a></li>
+            <li><a href="/order/basket.html"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-bag"></use></svg><strong>장바구니</strong><span>담아 둔 상품</span></a></li>
+        </ul>
+    </section>
+    <div style="height:var(--section-gap)"></div>
+</div>

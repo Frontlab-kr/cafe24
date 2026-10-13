@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 533" width="800" height="1066" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bglook3" x1="0" y1="0" x2=".4" y2="1"><stop offset="0" stop-color="#C9C4B8"/><stop offset="1" stop-color="#9C978B"/></linearGradient>
+    <linearGradient id="shadelook3" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".14"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".16"/></linearGradient>
+    <filter id="blurlook3" x="-30%" y="-200%" width="160%" height="500%"><feGaussianBlur stdDeviation="9"/></filter>
+  </defs>
+  <rect width="400" height="533" fill="url(#bglook3)"/>
+  <path d="M80,533 L80,200 A120,120 0 0 1 320,200 L320,533 Z" fill="#fff" opacity=".12"/>
+  <rect x="0" y="437" width="400" height="96" fill="#000" opacity=".12"/>
+  <ellipse cx="200" cy="441" rx="120" ry="8" fill="#000" opacity=".25" filter="url(#blurlook3)"/>
+  <g transform="translate(0 30) scale(1.0)"><path d="M140,128 L260,128 L278,416 L216,416 L200,214 L184,416 L122,416 Z" fill="#3E3A35"/>
+    <path d="M140,128 L260,128 L278,416 L216,416 L200,214 L184,416 L122,416 Z" fill="url(#shadelook3)"/>
+    <path d="M140,150 L260,150" fill="none" stroke="#2C2926" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
+    <path d="M200,150 L200,214" fill="none" stroke="#2C2926" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
+    <path d="M230,150 L240,410" fill="none" stroke="#2C2926" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/></g>
+</svg>

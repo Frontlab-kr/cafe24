@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="800" height="1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bgp6" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F5F2EE"/>
+      <stop offset="1" stop-color="#F0ECE6"/>
+    </linearGradient>
+    <linearGradient id="shadep6" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fff" stop-opacity=".16"/>
+      <stop offset=".55" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".12"/>
+    </linearGradient>
+    <radialGradient id="glowp6" cx=".3" cy=".18" r=".7">
+      <stop offset="0" stop-color="#fff" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blurp6" x="-30%" y="-200%" width="160%" height="500%"><feGaussianBlur stdDeviation="9"/></filter>
+  </defs>
+  <rect width="400" height="500" fill="url(#bgp6)"/>
+  <path d="M96,500 L96,180 A104,104 0 0 1 304,180 L304,500 Z" fill="#E8E3DB"/>
+  <rect x="0" y="410" width="400" height="90" fill="#E5E0D8"/>
+  <rect x="0" y="409" width="400" height="1.5" fill="#D9D4CD"/>
+  <ellipse cx="200" cy="416" rx="120" ry="9" fill="#000" opacity=".14" filter="url(#blurp6)"/>
+  <g>
+    <path d="M130,166 L170,146 L200,160 L230,146 L270,166 L304,330 L280,338 L270,240 L272,410 L128,410 L130,240 L120,338 L96,330 Z" fill="#F6F3EC"/>
+    <path d="M130,166 L170,146 L200,160 L230,146 L270,166 L304,330 L280,338 L270,240 L272,410 L128,410 L130,240 L120,338 L96,330 Z" fill="url(#shadep6)"/>
+    <path d="M130,166 L170,146 L200,160 L230,146 L270,166 L304,330 L280,338 L270,240 L272,410 L128,410 L130,240 L120,338 L96,330 Z" fill="none" stroke="#D8D5CF" stroke-width="1.2"/>
+    <path d="M170,146 L186,186 L200,160 L214,186 L230,146" fill="none" stroke="#C4C2BC" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
+    <path d="M200,170 L200,410" fill="none" stroke="#C4C2BC" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
+    <circle cx="208" cy="214" r="4.5" fill="#C4C2BC"/>
+    <circle cx="208" cy="262" r="4.5" fill="#C4C2BC"/>
+    <circle cx="208" cy="310" r="4.5" fill="#C4C2BC"/>
+    <circle cx="208" cy="358" r="4.5" fill="#C4C2BC"/>
+  </g>
+  <rect width="400" height="500" fill="url(#glowp6)" opacity=".3"/>
+</svg>

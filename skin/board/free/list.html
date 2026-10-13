@@ -1,0 +1,85 @@
+<!--@layout(/layout/basic/layout.html)-->
+<!--
+    LUMEN — 게시판 목록 (자유게시판 · 공지사항 등 일반형 게시판 공용)
+    · 모듈 이름 끝 숫자 = 게시판 번호(board_no). 기본값: 1 공지사항 / 5 자유게시판
+      이 파일은 board_no=5(자유게시판) 기준입니다. 다른 게시판에 쓰려면 숫자를 모두 바꾸세요.
+    CHECK: 게시판 번호와 모듈명(board_title_5, board_notice_5, board_list_5, board_paging_5, board_search_5)을
+           관리자 > 게시판 관리 및 기본 스킨 board/free/list.html 과 대조하세요.
+-->
+<div class="lm-container">
+    <header class="lm-page-head" module="board_title_5">
+        <h1 class="lm-page-head__title"><span class="lm-display">Board</span>{$board_name}</h1>
+        <p class="lm-page-head__desc">{$board_title_desc}</p>
+    </header>
+
+    <table class="lm-table lm-table--stack">
+        <caption class="lm-sr-only">게시글 목록</caption>
+        <colgroup><col style="width:70px"/><col style="width:auto"/><col style="width:110px"/><col style="width:110px"/><col style="width:70px"/></colgroup>
+        <thead>
+            <tr><th scope="col" class="lm-table__no">번호</th><th scope="col">제목</th><th scope="col">작성자</th><th scope="col">작성일</th><th scope="col">조회</th></tr>
+        </thead>
+        <!-- 공지 -->
+        <tbody module="board_notice_5" class="lm-table__notice">
+            <tr>
+                <td class="lm-table__no"><span class="lm-badge lm-badge--best">공지</span></td>
+                <td class="lm-table__subject"><a href="{$link_board_detail}">{$subject}</a> {$new_icon}</td>
+                <td>{$writer}</td>
+                <td>{$write_date}</td>
+                <td>{$hit_count}</td>
+            </tr>
+            <tr>
+                <td class="lm-table__no"><span class="lm-badge lm-badge--best">공지</span></td>
+                <td class="lm-table__subject"><a href="{$link_board_detail}">{$subject}</a> {$new_icon}</td>
+                <td>{$writer}</td>
+                <td>{$write_date}</td>
+                <td>{$hit_count}</td>
+            </tr>
+        </tbody>
+        <!-- 일반 글 -->
+        <tbody module="board_list_5">
+            <!--
+                $login_page_url = /member/login.html
+                $deny_access_url = /index.html
+            -->
+            <tr>
+                <td class="lm-table__no">{$no}</td>
+                <td class="lm-table__subject">{$reply_icon}<a href="{$link_board_detail}">{$subject}</a> {$lock_icon} {$attach_icon} {$new_icon} <span class="lm-text-sub">{$comment_count}</span></td>
+                <td>{$writer}</td>
+                <td>{$write_date}</td>
+                <td>{$hit_count}</td>
+            </tr>
+            <tr>
+                <td class="lm-table__no">{$no}</td>
+                <td class="lm-table__subject">{$reply_icon}<a href="{$link_board_detail}">{$subject}</a> {$lock_icon} {$attach_icon} {$new_icon} <span class="lm-text-sub">{$comment_count}</span></td>
+                <td>{$writer}</td>
+                <td>{$write_date}</td>
+                <td>{$hit_count}</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- CHECK: 조회수 변수 {$hit_count} / {$hit}, 글 링크 {$link_board_detail} 이름 -->
+
+    <div class="lm-board-btns" module="board_listbutton_5">
+        <a href="{$write_url}" class="lm-btn lm-btn--sm {$write_btn_display|display}">글쓰기</a><!-- CHECK: 글쓰기 링크 변수 -->
+    </div>
+
+    <nav class="lm-paging" module="board_paging_5" aria-label="페이지">
+        <a class="lm-paging__arrow" href="{$param_before}" aria-label="이전 페이지"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-chevron-left"></use></svg></a>
+        <ol>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+        </ol>
+        <a class="lm-paging__arrow" href="{$param_next}" aria-label="다음 페이지"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-chevron-right"></use></svg></a>
+    </nav>
+
+    <form id="boardSearchForm" name="" action="/board/free/list.html" method="get" target="_top" class="lm-form">
+        <input id="board_no" name="board_no" value="5" type="hidden"/>
+        <div class="lm-board-search" module="board_search_5">
+            <label class="lm-sr-only" for="search_date">기간</label>{$form.search_date}
+            <label class="lm-sr-only" for="search_key">검색 항목</label>{$form.search_key}
+            <label class="lm-sr-only" for="search">검색어</label>{$form.search}
+            <a href="#none" class="lm-btn lm-btn--sm" onclick="BOARD.form_submit('boardSearchForm');">검색</a>
+        </div>
+    </form>
+    <div style="height:var(--section-gap)"></div>
+</div>

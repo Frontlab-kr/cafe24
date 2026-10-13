@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="600" height="600" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bgcat3.svg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#EFF0EC"/>
+      <stop offset="1" stop-color="#E7E8E3"/>
+    </linearGradient>
+    <linearGradient id="shadecat3.svg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fff" stop-opacity=".16"/>
+      <stop offset=".55" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".12"/>
+    </linearGradient>
+    <radialGradient id="glowcat3.svg" cx=".3" cy=".18" r=".7">
+      <stop offset="0" stop-color="#fff" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blurcat3.svg" x="-30%" y="-200%" width="160%" height="500%"><feGaussianBlur stdDeviation="9"/></filter>
+  </defs>
+  <rect width="400" height="400" fill="url(#bgcat3.svg)"/>
+  <circle cx="270" cy="120" r="80" fill="#DDDED9"/>
+  <rect x="0" y="330" width="400" height="70" fill="#D9DAD5"/>
+  <ellipse cx="200" cy="334" rx="110" ry="8" fill="#000" opacity=".14" filter="url(#blurcat3.svg)"/>
+  <g transform="translate(40 -62) scale(.8)"><path d="M140,128 L260,128 L278,416 L216,416 L200,214 L184,416 L122,416 Z" fill="#8D9886"/>
+    <path d="M140,128 L260,128 L278,416 L216,416 L200,214 L184,416 L122,416 Z" fill="url(#shadecat3.svg)"/>
+    <path d="M140,150 L260,150" fill="none" stroke="#656D60" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
+    <path d="M200,150 L200,214" fill="none" stroke="#656D60" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
+    <path d="M230,150 L240,410" fill="none" stroke="#656D60" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/></g>
+</svg>

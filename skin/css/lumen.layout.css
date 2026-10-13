@@ -130,7 +130,10 @@
   box-shadow: var(--shadow-md);
   padding: 28px 0 32px;
 }
+.lm-search .lm-container { padding-right: calc(var(--gutter) + 44px); }
 .lm-search__form { position: relative; display: flex; align-items: center; border-bottom: 1px solid var(--c-ink); }
+.lm-search__form input:focus-visible { outline: none; }
+.lm-search__form:focus-within { box-shadow: 0 1px 0 0 var(--c-ink); }
 .lm-search__form input[type="text"], .lm-search__input {
   flex: 1; min-width: 0; height: 56px; padding: 0 48px 0 0;
   border: 0; background: transparent;
@@ -142,7 +145,7 @@
 .lm-search__keywords strong { margin-right: 6px; font-size: var(--fs-xs); letter-spacing: var(--ls-wide); color: var(--c-sub); font-weight: var(--fw-semibold); }
 .lm-search__keywords a { padding: 6px 12px; border: 1px solid var(--c-line); border-radius: 20px; color: var(--c-sub); }
 .lm-search__keywords a:hover { color: var(--c-ink); border-color: var(--c-ink); }
-.lm-search__close { position: absolute; top: 8px; right: max(8px, calc(var(--gutter) - 10px)); width: 40px; height: 40px; display: grid; place-items: center; }
+.lm-search__close { position: absolute; top: 36px; right: max(8px, calc(var(--gutter) - 10px)); width: 40px; height: 40px; display: grid; place-items: center; }
 
 /* ---- Dim / Drawer (mobile) ------------------------------------------ */
 .lm-dim {
@@ -216,7 +219,7 @@
 @media (min-width: 1024px) { .lm-totop { right: 32px; bottom: 32px; width: 52px; height: 52px; } }
 
 /* ---- Main / page head / breadcrumb ---------------------------------- */
-.lm-main { display: block; min-height: 50vh; }
+.lm-main { display: block; }
 .lm-page { padding-top: 24px; padding-bottom: var(--section-gap); }
 .lm-breadcrumb { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: var(--fs-xs); color: var(--c-muted); }
 .lm-breadcrumb li { display: inline-flex; align-items: center; gap: 6px; }
@@ -280,3 +283,9 @@
   .lm-footer__top { padding: 64px 0 40px; }
   .lm-footer__grid { grid-template-columns: 1.1fr .9fr .8fr 2fr; gap: 48px; padding: 48px 0; }
 }
+
+/* ---- Cafe24 모듈 래퍼 보정 ------------------------------------------ */
+.lm-header__member { display: flex; align-items: center; }
+.lm-header__member.displaynone { display: none; }
+.lm-search__module, .lm-search fieldset { display: contents; }
+.lm-search legend { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }

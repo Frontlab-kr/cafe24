@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="600" height="600" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bgcat6.svg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F1EEEB"/>
+      <stop offset="1" stop-color="#EAE6E1"/>
+    </linearGradient>
+    <linearGradient id="shadecat6.svg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fff" stop-opacity=".16"/>
+      <stop offset=".55" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".12"/>
+    </linearGradient>
+    <radialGradient id="glowcat6.svg" cx=".3" cy=".18" r=".7">
+      <stop offset="0" stop-color="#fff" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blurcat6.svg" x="-30%" y="-200%" width="160%" height="500%"><feGaussianBlur stdDeviation="9"/></filter>
+  </defs>
+  <rect width="400" height="400" fill="url(#bgcat6.svg)"/>
+  <circle cx="270" cy="120" r="80" fill="#E0DCD8"/>
+  <rect x="0" y="330" width="400" height="70" fill="#DBD8D3"/>
+  <ellipse cx="200" cy="334" rx="110" ry="8" fill="#000" opacity=".14" filter="url(#blurcat6.svg)"/>
+  <g transform="translate(40 -62) scale(.8)"><path d="M172,96 L178,140 M228,96 L222,140" fill="none" stroke="#9A5B45" stroke-width="9" stroke-linecap="round"/>
+    <path d="M172,138 L228,138 L238,196 L300,420 L100,420 L162,196 Z" fill="#9A5B45"/>
+    <path d="M172,138 L228,138 L238,196 L300,420 L100,420 L162,196 Z" fill="url(#shadecat6.svg)"/>
+    <path d="M162,196 L238,196" fill="none" stroke="#6E4131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
+    <path d="M190,200 L172,418 M214,200 L236,418" fill="none" stroke="#6E4131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/></g>
+</svg>

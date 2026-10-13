@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="800" height="1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bgbannerb" x1="0" y1="0" x2=".4" y2="1"><stop offset="0" stop-color="#5B4B42"/><stop offset="1" stop-color="#3A302B"/></linearGradient>
+    <linearGradient id="shadebannerb" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".14"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".16"/></linearGradient>
+    <filter id="blurbannerb" x="-30%" y="-200%" width="160%" height="500%"><feGaussianBlur stdDeviation="9"/></filter>
+  </defs>
+  <rect width="400" height="500" fill="url(#bgbannerb)"/>
+  <circle cx="200" cy="200" r="130" fill="#fff" opacity=".08"/>
+  <rect x="0" y="410" width="400" height="90" fill="#000" opacity=".12"/>
+  <ellipse cx="200" cy="414" rx="120" ry="8" fill="#000" opacity=".25" filter="url(#blurbannerb)"/>
+  <g transform="translate(0 10) scale(1.0)"><path d="M128,262 C120,120 280,120 272,262" fill="none" stroke="#C9A27A" stroke-width="9" stroke-linecap="round"/>
+    <path d="M110,262 L290,262 A90,90 0 0 1 110,262 Z" fill="#C9A27A"/>
+    <path d="M110,262 L290,262 A90,90 0 0 1 110,262 Z" fill="url(#shadebannerb)"/>
+    <path d="M110,262 L290,262" fill="none" stroke="#907457" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
+    <circle cx="200" cy="282" r="4.5" fill="#907457"/></g>
+</svg>

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="800" height="1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bgp11" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#EEECE9"/>
+      <stop offset="1" stop-color="#E6E3DE"/>
+    </linearGradient>
+    <linearGradient id="shadep11" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fff" stop-opacity=".16"/>
+      <stop offset=".55" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".12"/>
+    </linearGradient>
+    <radialGradient id="glowp11" cx=".3" cy=".18" r=".7">
+      <stop offset="0" stop-color="#fff" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blurp11" x="-30%" y="-200%" width="160%" height="500%"><feGaussianBlur stdDeviation="9"/></filter>
+  </defs>
+  <rect width="400" height="500" fill="url(#bgp11)"/>
+  <rect x="250" y="40" width="110" height="380" fill="#DEDAD4"/>
+  <rect x="0" y="410" width="400" height="90" fill="#DAD6D0"/>
+  <rect x="0" y="409" width="400" height="1.5" fill="#CFCBC5"/>
+  <ellipse cx="200" cy="416" rx="120" ry="9" fill="#000" opacity=".14" filter="url(#blurp11)"/>
+  <g>
+    <path d="M172,96 L178,140 M228,96 L222,140" fill="none" stroke="#2E3238" stroke-width="9" stroke-linecap="round"/>
+    <path d="M172,138 L228,138 L238,196 L300,420 L100,420 L162,196 Z" fill="#2E3238"/>
+    <path d="M172,138 L228,138 L238,196 L300,420 L100,420 L162,196 Z" fill="url(#shadep11)"/>
+    <path d="M162,196 L238,196" fill="none" stroke="#212428" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
+    <path d="M190,200 L172,418 M214,200 L236,418" fill="none" stroke="#212428" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
+  </g>
+  <rect width="400" height="500" fill="url(#glowp11)" opacity=".3"/>
+</svg>

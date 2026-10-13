@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="800" height="1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bgp3b" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F2EFEA"/>
+      <stop offset="1" stop-color="#ECE7E0"/>
+    </linearGradient>
+    <linearGradient id="shadep3b" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fff" stop-opacity=".16"/>
+      <stop offset=".55" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".12"/>
+    </linearGradient>
+    <radialGradient id="glowp3b" cx=".3" cy=".18" r=".7">
+      <stop offset="0" stop-color="#fff" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blurp3b" x="-30%" y="-200%" width="160%" height="500%"><feGaussianBlur stdDeviation="9"/></filter>
+  </defs>
+  <rect width="400" height="500" fill="#DDD9D2"/>
+  <rect width="400" height="500" fill="#DDD9D2"/>
+  <ellipse cx="160" cy="520" rx="260" ry="60" fill="#CFCBC5"/>
+  <g transform="translate(-170 -150) scale(1.85)">
+    <path d="M160,232 C160,128 240,128 240,232" fill="none" stroke="#3B3936" stroke-width="9" stroke-linecap="round"/>
+    <path d="M120,228 L280,228 L292,414 L108,414 Z" fill="#3B3936"/>
+    <path d="M120,228 L280,228 L292,414 L108,414 Z" fill="url(#shadep3b)"/>
+    <path d="M120,262 L280,262" fill="none" stroke="#2A2926" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
+  </g>
+
+  <rect width="400" height="500" fill="url(#glowp3b)" opacity=".3"/>
+</svg>

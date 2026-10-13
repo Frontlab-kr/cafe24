@@ -1,0 +1,118 @@
+<!--@layout(/layout/basic/layout.html)-->
+<!--
+    LUMEN — 장바구니
+    ─────────────────────────────────────────────────────────────
+    ⚠ 장바구니의 수량 변경 · 옵션 변경 · 선택 삭제 · 주문 버튼은 카페24 스크립트(Basket.*)가
+      기본 스킨의 name/id/onclick 에 의존합니다. 아래 {$action_*} · {$form.*} 를 유지하세요.
+      동작이 다르면 기본 스킨 order/basket.html 의 Order_normnormal 내부 행(<tr>)을
+      복사해 lm-cart-item 마크업으로 감싸는 방식으로 병합하세요.
+    ─────────────────────────────────────────────────────────────
+-->
+<div class="lm-container">
+    <header class="lm-cart-head">
+        <h1>Shopping Bag<small>장바구니</small></h1>
+        <ol class="lm-steps" aria-label="주문 단계">
+            <li aria-current="step"><b>01</b> 장바구니</li>
+            <li><b>02</b> 주문서 작성</li>
+            <li><b>03</b> 주문 완료</li>
+        </ol>
+    </header>
+
+    <div module="Order_BasketPackage">
+        <!--
+            $paymethod_info_display = T
+        -->
+
+        <!-- 장바구니가 비었을 때 -->
+        <div class="lm-empty" module="Order_empty">
+            <svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-bag"></use></svg>
+            <p>장바구니가 비어 있습니다.</p>
+            <a class="lm-btn lm-btn--line" href="/">쇼핑 계속하기</a>
+        </div>
+
+        <div class="lm-cart">
+            <div class="lm-cart__main">
+                <!-- 무료배송까지 남은 금액 — CHECK: 무료배송 기준 금액 변수. 없으면 문구 직접 작성 -->
+                <div class="lm-cart__ship" module="Order_totalsummary">
+                    <p>5만원 이상 구매 시 <strong>무료배송</strong> · 오후 2시 이전 주문 시 당일 출고</p>
+                </div>
+
+                <!-- CHECK: 국내/해외 배송 탭 모듈(Order_tabinfo) 사용 여부 -->
+
+                <!-- 일반(국내) 상품 -->
+                <div module="Order_normnormal">
+                    <!--
+                        $login_url = /member/login.html
+                    -->
+                    <div class="lm-cart__toolbar">
+                        <label class="lm-check"><input type="checkbox" onclick="Basket.setCheckBasketList('basket_product_normal_type_normal', this);"/> 전체선택</label>
+                        <div><a href="#none" onclick="Basket.deleteBasket()">선택 삭제</a></div>
+                    </div>
+
+                    <ul class="lm-cart__list" module="Order_list">
+                        <li class="lm-cart-item">
+                            <div class="lm-cart-item__check"><label class="lm-check">{$form.basket_product_normal_type_normal}<span class="lm-sr-only">상품 선택</span></label></div>
+                            <a class="lm-cart-item__thumb" href="{$product_link}"><img src="{$product_image}" alt=""/></a>
+                            <div class="lm-cart-item__body">
+                                <p class="lm-cart-item__name"><a href="{$product_link}">{$product_name}</a></p>
+                                <p class="lm-cart-item__opt {$option_display|display}">{$option_str} <a href="#none" onclick="{$action_option_change}">옵션 변경</a></p>
+                                <p class="lm-cart-item__ship">{$delivery_type} · {$shipping_fee}</p>
+                                <div class="lm-cart-item__row">
+                                    <span class="lm-qty lm-qty--sm">
+                                        <a href="javascript:;" onclick="{$action_quantity_down}" aria-label="수량 감소"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-minus"></use></svg></a>
+                                        {$form.quantity}
+                                        <a href="javascript:;" onclick="{$action_quantity_up}" aria-label="수량 증가"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-plus"></use></svg></a>
+                                    </span>
+                                    <a href="javascript:;" class="lm-link" onclick="{$action_quantity_modify}">변경</a>
+                                    <p class="lm-cart-item__price"><del class="{$product_price_custom_display|display}">{$product_price_custom}</del><strong>{$sum_price}</strong></p>
+                                </div>
+                            </div>
+                            <a href="#none" class="lm-cart-item__delete" onclick="{$action_delete}" aria-label="삭제"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-close"></use></svg></a>
+                        </li>
+                        <li class="lm-cart-item">
+                            <div class="lm-cart-item__check"><label class="lm-check">{$form.basket_product_normal_type_normal}<span class="lm-sr-only">상품 선택</span></label></div>
+                            <a class="lm-cart-item__thumb" href="{$product_link}"><img src="{$product_image}" alt=""/></a>
+                            <div class="lm-cart-item__body">
+                                <p class="lm-cart-item__name"><a href="{$product_link}">{$product_name}</a></p>
+                                <p class="lm-cart-item__opt {$option_display|display}">{$option_str} <a href="#none" onclick="{$action_option_change}">옵션 변경</a></p>
+                                <p class="lm-cart-item__ship">{$delivery_type} · {$shipping_fee}</p>
+                                <div class="lm-cart-item__row">
+                                    <span class="lm-qty lm-qty--sm">
+                                        <a href="javascript:;" onclick="{$action_quantity_down}" aria-label="수량 감소"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-minus"></use></svg></a>
+                                        {$form.quantity}
+                                        <a href="javascript:;" onclick="{$action_quantity_up}" aria-label="수량 증가"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-plus"></use></svg></a>
+                                    </span>
+                                    <a href="javascript:;" class="lm-link" onclick="{$action_quantity_modify}">변경</a>
+                                    <p class="lm-cart-item__price"><del class="{$product_price_custom_display|display}">{$product_price_custom}</del><strong>{$sum_price}</strong></p>
+                                </div>
+                            </div>
+                            <a href="#none" class="lm-cart-item__delete" onclick="{$action_delete}" aria-label="삭제"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-close"></use></svg></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 결제 예정 금액 -->
+            <aside class="lm-cart__aside" aria-labelledby="lmSummaryTitle">
+                <div class="lm-summary" module="Order_totalsummary">
+                    <h2 class="lm-summary__title" id="lmSummaryTitle">결제 예정 금액</h2>
+                    <!-- CHECK: 합계 변수명(total_product_price / total_delv_price / total_discount / total_order_price) -->
+                    <dl>
+                        <div><dt>총 상품금액</dt><dd>{$total_product_price_display}</dd></div>
+                        <div><dt>할인 금액</dt><dd class="is-minus">{$total_discount_price_display}</dd></div>
+                        <div><dt>배송비</dt><dd>{$total_delv_price_display}</dd></div>
+                    </dl>
+                    <p class="lm-summary__total"><span>결제 예정 금액</span><strong>{$total_order_price_display}</strong></p>
+                    <div class="lm-summary__btns" module="Order_totalorder">
+                        <a href="#none" class="lm-btn lm-btn--lg lm-btn--block" onclick="{$action_order_all}">전체 상품 주문하기</a>
+                        <a href="#none" class="lm-btn lm-btn--line lm-btn--block" onclick="{$action_order_select}">선택 상품 주문하기</a>
+                    </div>
+                    <!-- 간편결제(네이버페이 등) — CHECK: 기본 스킨의 간편결제 버튼 영역을 이곳에 복사 -->
+                    <p class="lm-summary__note">할인 쿠폰과 적립금은 주문서 작성 단계에서 적용할 수 있습니다.<br/>장바구니 상품은 최대 30일간 보관됩니다.</p>
+                </div>
+                <a class="lm-link" href="/" style="margin-top:20px">쇼핑 계속하기 <svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-arrow-right"></use></svg></a>
+            </aside>
+        </div>
+    </div>
+    <div style="height:var(--section-gap)"></div>
+</div>

@@ -1,0 +1,71 @@
+<!--
+    LUMEN — 푸터
+    · 사업자 정보는 관리자 > 상점관리 > 기본정보 관리 값이 Layout_footer 모듈 변수로 출력됩니다.
+    · 고객센터 운영시간 · 입금 계좌 · SNS 링크는 아래 텍스트를 직접 수정하세요.
+-->
+<footer class="lm-footer">
+    <div class="lm-container">
+        <div class="lm-footer__top">
+            <div class="lm-footer__brand">
+                <div class="lm-logo"><a href="/">LUMEN</a></div>
+                <p>매일의 빛을 닮은 옷과 물건 — 여백 있는 일상을 제안합니다.</p>
+            </div>
+            <!-- SNS: href 를 운영 채널 주소로 바꾸고, 쓰지 않는 항목은 <li> 째 삭제 -->
+            <ul class="lm-sns" aria-label="SNS">
+                <li><a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="인스타그램 (새 창)"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-instagram"></use></svg></a></li>
+                <li><a href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="유튜브 (새 창)"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-youtube"></use></svg></a></li>
+                <li><a href="https://pf.kakao.com/" target="_blank" rel="noopener" aria-label="카카오톡 채널 (새 창)"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-chat"></use></svg></a></li>
+                <li><a href="https://blog.naver.com/" target="_blank" rel="noopener" aria-label="블로그 (새 창)"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-blog"></use></svg></a></li>
+            </ul>
+        </div>
+
+        <div class="lm-footer__grid">
+            <section>
+                <h2 class="lm-footer__title">고객센터</h2>
+                <!-- CHECK: 기본 스킨에 고객센터 전화 변수({$phone} 또는 {$cs_phone})가 있다면 아래 숫자를 변수로 교체 -->
+                <p class="lm-footer__tel">1588-0000</p>
+                <p>평일 10:00 – 17:00 · 점심 12:30 – 13:30<br/>토·일·공휴일 휴무</p>
+            </section>
+
+            <section>
+                <h2 class="lm-footer__title">입금 계좌</h2>
+                <!-- 무통장 입금 계좌: 직접 수정 -->
+                <p>국민은행 000000-00-000000<br/>신한은행 000-000-000000<br/>예금주 (주)상호명</p>
+            </section>
+
+            <section>
+                <h2 class="lm-footer__title">쇼핑 안내</h2>
+                <ul class="lm-footer__menu">
+                    <li><a href="/shopinfo/company.html">회사소개</a></li>
+                    <li><a href="/member/mall_agreement.html">이용약관</a></li>
+                    <li><a href="/member/privacy.html" class="is-strong">개인정보처리방침</a></li>
+                    <li><a href="/shopinfo/guide.html">이용안내</a></li>
+                </ul>
+            </section>
+
+            <section>
+                <h2 class="lm-footer__title">사업자 정보</h2>
+                <!-- CHECK: Layout_footer 변수명을 기본 스킨 footer 와 대조하세요.
+                            (사업자정보확인 링크 변수는 스킨 버전에 따라 다를 수 있습니다) -->
+                <div module="Layout_footer">
+                    <p class="lm-footer__info">
+                        <span><em>상호</em>{$company_name}</span>
+                        <span><em>대표</em>{$president_name}</span>
+                        <span><em>사업자등록번호</em>{$company_regno} <a href="#none" onclick="{$action_regno_info}">[사업자정보확인]</a></span>
+                        <span><em>통신판매업신고</em>{$network_regno}</span>
+                        <span><em>전화</em>{$phone}</span>
+                        <span><em>주소</em>{$mall_zipcode} {$mall_addr1} {$mall_addr2}</span>
+                        <span><em>개인정보보호책임자</em>{$cpo_name} ({$cpo_email})</span>
+                    </p>
+                </div>
+            </section>
+        </div>
+
+        <div class="lm-footer__bottom">
+            <p>© <span module="Layout_footer">{$mall_name}</span>. All rights reserved.</p>
+            <p>Hosting by Cafe24</p>
+        </div>
+    </div>
+</footer>
+
+<a href="#lmTop" class="lm-totop" data-lm-totop aria-label="맨 위로"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-arrow-up"></use></svg></a>

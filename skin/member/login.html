@@ -1,0 +1,85 @@
+<!--@layout(/layout/basic/layout.html)-->
+<!--
+    LUMEN — 로그인
+    · member_login : 회원 로그인
+    · 비회원 주문조회 탭은 기본 스킨 member/login.html 의 비회원 주문조회 모듈(myshop_orderhistorynologin 등)을 사용합니다.
+    · SNS 로그인은 관리자 > 쇼핑몰 설정 > 고객 설정 > SNS 로그인 에서 사용 설정이 필요합니다.
+-->
+<div class="lm-container">
+    <div class="lm-auth" data-lm-tabs>
+        <header class="lm-auth__head">
+            <h1>Sign In</h1>
+            <p>로그인하고 회원 전용 혜택을 받아보세요.</p>
+        </header>
+
+        <div class="lm-auth__tabs" role="tablist" aria-label="로그인 유형">
+            <button type="button" role="tab" id="lmLoginTab1" aria-controls="lmLoginPanel1" aria-selected="true">회원 로그인</button>
+            <button type="button" role="tab" id="lmLoginTab2" aria-controls="lmLoginPanel2" aria-selected="false">비회원 주문조회</button>
+        </div>
+
+        <!-- 회원 로그인 -->
+        <div role="tabpanel" id="lmLoginPanel1" aria-labelledby="lmLoginTab1">
+            <form id="member_form" name="" action="/exec/front/Member/login/" method="post" target="_self" class="lm-form">
+                <div module="member_login">
+                    <!--
+                        $defaultReturnUrl = /index.html
+                        $forbidIpUrl = member/adminFail.html
+                    -->
+                    <fieldset>
+                        <legend class="lm-sr-only">회원 로그인</legend>
+                        <div class="lm-auth__fields">
+                            <label class="lm-sr-only" for="member_id">아이디</label>
+                            {$form.member_id}
+                            <label class="lm-sr-only" for="member_passwd">비밀번호</label>
+                            {$form.member_passwd}
+                        </div>
+                        <div class="lm-auth__opts">
+                            <label class="lm-check {$use_save_id_display|display}">{$form.check_save_id} 아이디 저장</label>
+                            <span class="lm-check {$use_login_keyboard_display|display}">{$form.use_login_keyboard}</span>
+                        </div>
+                        <a href="#none" class="lm-btn lm-btn--lg lm-btn--block" onclick="{$action_func_login}">로그인</a>
+                    </fieldset>
+                    <!-- CHECK: {$use_save_id_display} 등 표시 조건 변수명, 보안접속 표기 변수 -->
+
+                    <p class="lm-auth__util">
+                        <a href="/member/id/find_id.html">아이디 찾기</a>
+                        <a href="/member/passwd/find_passwd_info.html">비밀번호 찾기</a>
+                    </p>
+
+                    <!-- SNS 로그인 — CHECK: 각 버튼의 onclick 은 기본 스킨 member/login.html 의 SNS 로그인 영역 값으로 교체
+                         (예: MemberAction.snsLogin('kakao', '{$sReturnUrl}')) 사용하지 않는 버튼은 삭제 -->
+                    <p class="lm-auth__divider">간편 로그인</p>
+                    <div class="lm-auth__sns">
+                        <a href="#none" class="lm-sns-btn lm-sns-btn--kakao {$use_kakao_login|display}" onclick="MemberAction.snsLogin('kakao', '{$sReturnUrl}');"><i aria-hidden="true"><svg class="lm-icon lm-icon--sm" aria-hidden="true" focusable="false"><use href="#lm-i-chat"></use></svg></i>카카오로 시작하기</a>
+                        <a href="#none" class="lm-sns-btn lm-sns-btn--naver {$use_naver_login|display}" onclick="MemberAction.snsLogin('naver', '{$sReturnUrl}');"><i aria-hidden="true">N</i>네이버로 시작하기</a>
+                        <a href="#none" class="lm-sns-btn lm-sns-btn--apple {$use_apple_login|display}" onclick="MemberAction.snsLogin('apple', '{$sReturnUrl}');"><i aria-hidden="true"><svg class="lm-icon lm-icon--sm" aria-hidden="true" focusable="false"><use href="#lm-i-apple"></use></svg></i>Apple로 시작하기</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- 비회원 주문조회 -->
+        <div role="tabpanel" id="lmLoginPanel2" aria-labelledby="lmLoginTab2" hidden>
+            <!-- CHECK: 비회원 주문조회 모듈명 및 {$form.*} 이름 -->
+            <form id="order_history_nologin" name="" action="/exec/front/myshop/OrderHistoryNoLogin/" method="post" target="_self" class="lm-form">
+                <div module="myshop_OrderHistoryNoLogin">
+                    <div class="lm-auth__fields">
+                        <label class="lm-sr-only" for="order_name">주문자명</label>
+                        {$form.order_name}
+                        <label class="lm-sr-only" for="order_id">주문번호</label>
+                        {$form.order_id}
+                        <label class="lm-sr-only" for="order_password">비회원 주문 비밀번호</label>
+                        {$form.order_password}
+                    </div>
+                    <a href="#none" class="lm-btn lm-btn--lg lm-btn--block" style="margin-top:24px" onclick="{$action_func_order_history}">주문 조회</a>
+                </div>
+            </form>
+        </div>
+
+        <div class="lm-auth__join">
+            <p>지금 가입하면 <b>10% 할인 쿠폰</b>과 적립금을 드려요.</p>
+            <a class="lm-btn lm-btn--line lm-btn--block" href="/member/agreement.html">회원가입</a>
+        </div>
+    </div>
+    <div style="height:var(--section-gap)"></div>
+</div>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko" class="lm-no-js">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<!--
+    LUMEN — 기본 레이아웃 (서브 페이지 공통)
+    · <title>, SEO 메타, 카페24 공통 스크립트(jQuery 등)는 카페24가 자동 삽입합니다.
+    · 메인 페이지는 /layout/basic/main.html 레이아웃을 사용합니다.
+-->
+
+<!-- 웹폰트: Pretendard(본문) + Cormorant Garamond(영문 헤드라인) -->
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;display=swap"/>
+
+<!-- LUMEN 스타일 (색상·폰트 변경은 lumen.variables.css 한 곳에서) -->
+<!--@css(/css/lumen.variables.css)-->
+<!--@css(/css/lumen.base.css)-->
+<!--@css(/css/lumen.layout.css)-->
+<!--@css(/css/lumen.components.css)-->
+<!--@css(/css/lumen.pages.css)-->
+</head>
+<body class="lm-body" id="lmTop">
+<!--@import(/layout/basic/icons.html)-->
+<a class="lm-skip" href="#lmContents">본문 바로가기</a>
+
+<!--@import(/layout/basic/header.html)-->
+
+<main class="lm-main" id="lmContents" tabindex="-1">
+<!--@contents-->
+</main>
+
+<!--@import(/layout/basic/footer.html)-->
+
+<!-- LUMEN UI 스크립트 (jQuery 의존 없음) -->
+<!--@js(/js/lumen.js)-->
+</body>
+</html>

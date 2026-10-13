@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="600" height="600" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bginsta2.svg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#DFE1DB"/>
+      <stop offset="1" stop-color="#CFD2C8"/>
+    </linearGradient>
+    <linearGradient id="shadeinsta2.svg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fff" stop-opacity=".16"/>
+      <stop offset=".55" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".12"/>
+    </linearGradient>
+    <radialGradient id="glowinsta2.svg" cx=".3" cy=".18" r=".7">
+      <stop offset="0" stop-color="#fff" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blurinsta2.svg" x="-30%" y="-200%" width="160%" height="500%"><feGaussianBlur stdDeviation="9"/></filter>
+  </defs>
+  <rect width="400" height="400" fill="url(#bginsta2.svg)"/>
+  <circle cx="270" cy="120" r="80" fill="#DBDDD5"/>
+  <rect x="0" y="330" width="400" height="70" fill="#C2C5BC"/>
+  <ellipse cx="200" cy="334" rx="110" ry="8" fill="#000" opacity=".14" filter="url(#blurinsta2.svg)"/>
+  <g transform="translate(40 -62) scale(.8)"><path d="M178,170 C178,160 222,160 222,170 L220,198 C276,228 292,312 262,372 C250,400 150,400 138,372 C108,312 124,228 180,198 Z" fill="#E8DFD0"/>
+    <path d="M178,170 C178,160 222,160 222,170 L220,198 C276,228 292,312 262,372 C250,400 150,400 138,372 C108,312 124,228 180,198 Z" fill="url(#shadeinsta2.svg)"/>
+    <path d="M178,170 C178,160 222,160 222,170 L220,198 C276,228 292,312 262,372 C250,400 150,400 138,372 C108,312 124,228 180,198 Z" fill="none" stroke="#CCC4B7" stroke-width="1.2"/>
+    <path d="M182,198 L218,198" fill="none" stroke="#B9B2A6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
+    <path d="M200,170 C196,120 210,90 230,62" fill="none" stroke="#6F7564" stroke-width="2.4" stroke-linecap="round"/>
+    <path d="M204,128 C186,112 170,108 156,112" fill="none" stroke="#6F7564" stroke-width="2.4" stroke-linecap="round"/>
+    <path d="M230,62 C246,58 254,70 248,82 C238,86 228,76 230,62 Z" fill="#7E8770"/>
+    <path d="M156,112 C146,100 132,104 132,116 C142,124 152,122 156,112 Z" fill="#7E8770"/></g>
+</svg>

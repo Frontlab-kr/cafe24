@@ -1,0 +1,157 @@
+<!--
+    LUMEN — 헤더 (상단 띠배너 · 헤더 · 검색 · 모바일 드로어 · 하단 탭바)
+    layout.html / main.html 에서 @import 로 불러옵니다.
+-->
+
+<!-- ============ 상단 공지 띠배너 ============
+     · 문구는 아래 <p> 안을 직접 수정하세요.
+     · data-lm-topbanner 값을 바꾸면(예: notice-02) 이전에 닫은 방문자에게도 다시 노출됩니다.
+     · data-lm-topbanner-days : 닫은 뒤 다시 보이지 않을 기간(일)
+     · 띠배너를 쓰지 않으려면 이 블록 전체를 삭제하세요. -->
+<div class="lm-topbar" data-lm-topbanner="notice-01" data-lm-topbanner-days="1" role="region" aria-label="공지">
+    <div class="lm-container lm-topbar__inner">
+        <p class="lm-topbar__text"><a href="/member/agreement.html">신규 회원 첫 구매 <em>10% 할인</em> · 5만원 이상 무료배송</a></p>
+        <button type="button" class="lm-topbar__close" data-lm-topbanner-close aria-label="공지 배너 닫기"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-close"></use></svg></button>
+    </div>
+</div>
+
+<!-- ============ 헤더 ============ -->
+<header class="lm-header" data-lm-header>
+    <div class="lm-container lm-header__inner">
+
+        <div class="lm-header__left">
+            <button type="button" class="lm-header__btn lm-hide-pc" data-lm-drawer-open aria-controls="lmDrawer" aria-expanded="false" aria-label="전체 메뉴 열기"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-menu"></use></svg></button>
+
+            <!-- PC 카테고리 (관리자 > 상품 > 상품 분류 관리 의 대분류가 출력됩니다) -->
+            <nav class="lm-gnb lm-hide-mo" aria-label="주요 카테고리">
+                <!-- CHECK: Layout_category 안의 변수명({$param}, {$name_or_img_tag})을 기본 스킨 header 와 대조하세요. -->
+                <ul module="Layout_category" class="lm-gnb__list">
+                    <li class="lm-gnb__item">
+                        <a class="lm-gnb__link" href="/product/list.html{$param}">{$name_or_img_tag}</a>
+                        <ul class="lm-gnb__sub" data-lm-subcate="{$param}"></ul>
+                    </li>
+                    <li class="lm-gnb__item">
+                        <a class="lm-gnb__link" href="/product/list.html{$param}">{$name_or_img_tag}</a>
+                        <ul class="lm-gnb__sub" data-lm-subcate="{$param}"></ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- 로고: 텍스트 로고 기본. 이미지 로고는 <img src="/web/upload/lumen/logo.svg" alt="쇼핑몰명"/> 로 교체 -->
+        <div class="lm-logo"><a href="/" aria-label="홈으로">LUMEN</a></div>
+
+        <div class="lm-header__right">
+            <button type="button" class="lm-header__btn" data-lm-search-open aria-controls="lmSearch" aria-expanded="false" aria-label="검색 열기"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-search"></use></svg></button>
+
+            <!-- 로그인 전 -->
+            <div module="Layout_stateLogoff" class="lm-header__member">
+                <a class="lm-header__text-link" href="/member/login.html">로그인</a>
+                <a class="lm-header__text-link" href="/member/agreement.html">회원가입</a>
+            </div>
+            <!-- 로그인 후 -->
+            <!-- CHECK: 로그아웃 링크 변수({$action_logout})를 기본 스킨의 Layout_stateLogon 과 대조하세요. -->
+            <div module="Layout_stateLogon" class="lm-header__member">
+                <a class="lm-header__text-link" href="{$action_logout}">로그아웃</a>
+            </div>
+
+            <a class="lm-header__btn lm-hide-mo" href="/myshop/index.html" aria-label="마이페이지"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-user"></use></svg></a>
+            <a class="lm-header__btn" href="/order/basket.html" aria-label="장바구니">
+                <svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-bag"></use></svg>
+                <span module="Layout_orderBasketcount" class="lm-badge-count" aria-label="담긴 상품 수">{$basket_count}</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- 검색 패널 -->
+    <div class="lm-search" id="lmSearch" data-lm-search hidden>
+        <div class="lm-container">
+            <form class="lm-search__form" id="searchBarForm" name="" action="/product/search.html" method="get" target="_self" role="search">
+                <input id="banner_action" name="banner_action" value="" type="hidden"/>
+                <!-- CHECK: 기본 스킨 검색폼은 {$form.keyword}, {$action_search_submit} 을 쓸 수 있습니다.
+                            아래는 표준 input 으로 작성되어 있어 그대로도 /product/search.html?keyword= 로 동작합니다. -->
+                <div module="Layout_SearchHeader" class="lm-search__module">
+                    <fieldset>
+                        <legend>상품 검색</legend>
+                        <label for="keyword" class="lm-sr-only">검색어</label>
+                        <input id="keyword" name="keyword" type="text" class="lm-search__input" placeholder="찾으시는 상품을 입력하세요" autocomplete="off" value=""/>
+                        <button type="submit" class="lm-search__submit" aria-label="검색"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-search"></use></svg></button>
+                    </fieldset>
+                </div>
+            </form>
+            <!-- 인기 검색어: 직접 수정 -->
+            <div class="lm-search__keywords">
+                <strong>인기 검색어</strong>
+                <a href="/product/search.html?keyword=린넨">린넨</a>
+                <a href="/product/search.html?keyword=가디건">가디건</a>
+                <a href="/product/search.html?keyword=토트백">토트백</a>
+                <a href="/product/search.html?keyword=셔츠">셔츠</a>
+            </div>
+        </div>
+        <button type="button" class="lm-search__close" data-lm-search-close aria-label="검색 닫기"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-close"></use></svg></button>
+    </div>
+</header>
+
+<!-- ============ 모바일 드로어 ============ -->
+<div class="lm-dim" data-lm-dim hidden></div>
+<aside class="lm-drawer" id="lmDrawer" aria-label="전체 메뉴" aria-hidden="true" inert tabindex="-1">
+    <div class="lm-drawer__head">
+        <div class="lm-logo"><a href="/">LUMEN</a></div>
+        <button type="button" class="lm-drawer__close" data-lm-drawer-close aria-label="메뉴 닫기"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-close"></use></svg></button>
+    </div>
+
+    <div module="Layout_stateLogoff" class="lm-drawer__member">
+        <p><strong>로그인</strong>하고 신규 회원 혜택을 받아보세요.</p>
+        <a class="lm-btn lm-btn--sm" href="/member/login.html">로그인</a>
+        <a class="lm-btn lm-btn--sm lm-btn--line" href="/member/agreement.html">회원가입</a>
+    </div>
+    <div module="Layout_stateLogon" class="lm-drawer__member">
+        <p><strong>{$name}</strong>님, 반갑습니다.</p><!-- CHECK: 회원 이름 변수 -->
+        <a class="lm-btn lm-btn--sm" href="/myshop/index.html">마이페이지</a>
+        <a class="lm-btn lm-btn--sm lm-btn--line" href="{$action_logout}">로그아웃</a>
+    </div>
+
+    <nav class="lm-drawer__nav" aria-label="카테고리">
+        <!-- 하위 분류는 lumen.js 가 /exec/front/Product/SubCategory 로 불러와 채웁니다.
+             하위 분류가 없는 대분류는 + 버튼이 자동으로 숨겨집니다. -->
+        <ul module="Layout_category" class="lm-drawer__cate">
+            <li data-lm-subwrap>
+                <div class="lm-acc__head">
+                    <a href="/product/list.html{$param}">{$name_or_img_tag}</a>
+                    <button type="button" class="lm-acc__toggle" aria-expanded="false" aria-controls="lmDrawerSub{$cate_no}" data-lm-accordion><span class="lm-sr-only">하위 메뉴 열기</span><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-plus"></use></svg></button>
+                </div>
+                <ul class="lm-acc__panel" id="lmDrawerSub{$cate_no}" data-lm-subcate="{$param}"></ul>
+            </li>
+            <li data-lm-subwrap>
+                <div class="lm-acc__head">
+                    <a href="/product/list.html{$param}">{$name_or_img_tag}</a>
+                    <button type="button" class="lm-acc__toggle" aria-expanded="false" aria-controls="lmDrawerSub{$cate_no}" data-lm-accordion><span class="lm-sr-only">하위 메뉴 열기</span><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-plus"></use></svg></button>
+                </div>
+                <ul class="lm-acc__panel" id="lmDrawerSub{$cate_no}" data-lm-subcate="{$param}"></ul>
+            </li>
+        </ul>
+        <!-- CHECK: {$cate_no} 변수가 Layout_category 에서 출력되지 않으면 id 중복이 생깁니다.
+                    그 경우 lumen.js 가 aria-controls 대상을 찾지 못하므로, id 대신 순번 변수를 사용하세요. -->
+    </nav>
+
+    <ul class="lm-drawer__links">
+        <li><a href="/board/free/list.html?board_no=1">공지사항</a></li>
+        <li><a href="/board/free/list.html?board_no=5">자유게시판</a></li>
+        <li><a href="/board/product/list.html?board_no=4">상품 후기</a></li>
+        <li><a href="/board/product/list.html?board_no=6">상품 Q&amp;A</a></li>
+        <li><a href="/myshop/order/list.html">주문 조회</a></li>
+        <li><a href="/myshop/wish_list.html">관심 상품</a></li>
+    </ul>
+    <div class="lm-drawer__cs">고객센터<strong>1588-0000</strong>평일 10:00 – 17:00 (점심 12:30 – 13:30)</div>
+</aside>
+
+<!-- ============ 모바일 하단 탭바 ============ -->
+<nav class="lm-tabbar" aria-label="하단 바로가기">
+    <ul class="lm-tabbar__list">
+        <li class="lm-tabbar__item"><a class="lm-tabbar__link" href="/"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-home"></use></svg><span>홈</span></a></li>
+        <li class="lm-tabbar__item"><button type="button" class="lm-tabbar__link" data-lm-drawer-open aria-controls="lmDrawer" aria-expanded="false"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-grid"></use></svg><span>카테고리</span></button></li>
+        <li class="lm-tabbar__item"><button type="button" class="lm-tabbar__link" data-lm-search-open aria-controls="lmSearch" aria-expanded="false"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-search"></use></svg><span>검색</span></button></li>
+        <li class="lm-tabbar__item"><a class="lm-tabbar__link" href="/myshop/index.html"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-user"></use></svg><span>마이</span></a></li>
+        <li class="lm-tabbar__item"><a class="lm-tabbar__link" href="/order/basket.html"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-bag"></use></svg><span>장바구니</span><span module="Layout_orderBasketcount" class="lm-badge-count">{$basket_count}</span></a></li>
+    </ul>
+</nav>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="600" height="600" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bgcat2.svg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F3F1ED"/>
+      <stop offset="1" stop-color="#EDEAE4"/>
+    </linearGradient>
+    <linearGradient id="shadecat2.svg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fff" stop-opacity=".16"/>
+      <stop offset=".55" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".12"/>
+    </linearGradient>
+    <radialGradient id="glowcat2.svg" cx=".3" cy=".18" r=".7">
+      <stop offset="0" stop-color="#fff" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blurcat2.svg" x="-30%" y="-200%" width="160%" height="500%"><feGaussianBlur stdDeviation="9"/></filter>
+  </defs>
+  <rect width="400" height="400" fill="url(#bgcat2.svg)"/>
+  <circle cx="270" cy="120" r="80" fill="#E3E0DA"/>
+  <rect x="0" y="330" width="400" height="70" fill="#DEDBD6"/>
+  <ellipse cx="200" cy="334" rx="110" ry="8" fill="#000" opacity=".14" filter="url(#blurcat2.svg)"/>
+  <g transform="translate(40 -62) scale(.8)"><path d="M128,172 L168,150 Q200,172 232,150 L272,172 L318,222 L288,246 L272,232 L272,404 L128,404 L128,232 L112,246 L82,222 Z" fill="#D8CBB6"/>
+    <path d="M128,172 L168,150 Q200,172 232,150 L272,172 L318,222 L288,246 L272,232 L272,404 L128,404 L128,232 L112,246 L82,222 Z" fill="url(#shadecat2.svg)"/>
+    <path d="M128,172 L168,150 Q200,172 232,150 L272,172 L318,222 L288,246 L272,232 L272,404 L128,404 L128,232 L112,246 L82,222 Z" fill="none" stroke="#BEB2A0" stroke-width="1.2"/>
+    <path d="M168,150 Q200,184 232,150" fill="none" stroke="#ACA291" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
+    <path d="M128,392 L272,392" fill="none" stroke="#ACA291" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/></g>
+</svg>

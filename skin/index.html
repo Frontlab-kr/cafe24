@@ -1,0 +1,418 @@
+<!--@layout(/layout/basic/main.html)-->
+<!--
+    LUMEN — 메인
+    ─────────────────────────────────────────────────────────────
+    섹션 순서: 01 메인 비주얼 → 02 카테고리 바로가기 → 03 NEW ARRIVALS → 04 배너 2분할
+               → 05 BEST(탭) → 06 룩북 → 07 인스타그램 → 08 뉴스레터
+
+    섹션 켜기/끄기 (주석 블록 단위)
+      · 잠시 끄기 : 해당 <section ...> 태그에 hidden 속성을 추가  예) <section class="lm-section" hidden>
+      · 완전 삭제 : "[SECTION nn] START" 부터 "[SECTION nn] END" 주석까지 통째로 삭제
+      · 섹션 안에는 카페24 설정 주석이 있으므로 블록 전체를 다시 주석으로 감싸지 마세요.
+
+    배너 이미지: FTP 로 /web/upload/lumen/ 폴더에 올린 뒤 아래 경로의 파일명을 맞추세요.
+      PC 비주얼 1920x840 (16:7) · 모바일 비주얼 1080x1350 (4:5) · 2분할 배너 1200x1500 (4:5)
+    ─────────────────────────────────────────────────────────────
+-->
+
+<!-- [SECTION 01] START : 메인 비주얼 슬라이더 (data-lm-autoplay = 자동재생 간격 ms, 0 이면 정지) -->
+<section class="lm-hero" aria-label="메인 비주얼">
+    <div class="lm-slider" data-lm-slider data-lm-autoplay="6000">
+        <div class="lm-slider__viewport">
+            <div class="lm-slider__track">
+                <!-- 슬라이드 1 -->
+                <div class="lm-slider__slide">
+                    <a class="lm-hero__media" href="/product/list.html?cate_no=24" tabindex="-1" aria-hidden="true">
+                        <picture>
+                            <source media="(min-width: 768px)" srcset="/web/upload/lumen/main_visual_01.jpg"/>
+                            <img src="/web/upload/lumen/main_visual_01_mo.jpg" alt="" width="1080" height="1350"/>
+                        </picture>
+                    </a>
+                    <div class="lm-hero__copy">
+                        <span class="lm-eyebrow">2026 Fall / Winter Collection</span>
+                        <h2 class="lm-hero__title">Quiet Light,<br/><em>Everyday</em> Form</h2>
+                        <p class="lm-hero__desc">고요한 빛을 닮은 울과 린넨. 오래 곁에 두고 싶은 가을의 기본을 소개합니다.</p>
+                        <div class="lm-hero__cta"><a class="lm-btn lm-btn--light" href="/product/list.html?cate_no=24">컬렉션 보기</a></div>
+                    </div>
+                </div>
+                <!-- 슬라이드 2 -->
+                <div class="lm-slider__slide">
+                    <a class="lm-hero__media" href="/product/list.html?cate_no=25" tabindex="-1" aria-hidden="true">
+                        <picture>
+                            <source media="(min-width: 768px)" srcset="/web/upload/lumen/main_visual_02.jpg"/>
+                            <img src="/web/upload/lumen/main_visual_02_mo.jpg" alt="" width="1080" height="1350" loading="lazy"/>
+                        </picture>
+                    </a>
+                    <div class="lm-hero__copy">
+                        <span class="lm-eyebrow">Living Objects</span>
+                        <h2 class="lm-hero__title">Slow Living,<br/><em>Soft</em> Things</h2>
+                        <p class="lm-hero__desc">손끝에 닿는 촉감까지 고른 리빙 오브제. 집 안의 여백을 채우는 작은 사물들.</p>
+                        <div class="lm-hero__cta"><a class="lm-btn lm-btn--light" href="/product/list.html?cate_no=25">리빙 둘러보기</a></div>
+                    </div>
+                </div>
+                <!-- 슬라이드 추가: 위 lm-slider__slide 블록을 복사 -->
+            </div>
+        </div>
+        <div class="lm-slider__controls">
+            <p class="lm-slider__counter" aria-hidden="true"><b data-lm-slider-current>01</b> / <span data-lm-slider-total>02</span></p>
+            <div class="lm-slider__progress" aria-hidden="true"><i></i></div>
+            <div class="lm-slider__arrows">
+                <button type="button" class="lm-slider__pause" data-lm-slider-pause aria-pressed="false" aria-label="자동 재생 정지"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-pause"></use></svg></button>
+                <button type="button" class="lm-slider__arrow" data-lm-slider-prev aria-label="이전 슬라이드"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-chevron-left"></use></svg></button>
+                <button type="button" class="lm-slider__arrow" data-lm-slider-next aria-label="다음 슬라이드"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-chevron-right"></use></svg></button>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- [SECTION 01] END -->
+
+<!-- [SECTION 02] START : 카테고리 바로가기 (cate_no 와 이미지 경로를 쇼핑몰에 맞게 수정) -->
+<section class="lm-section lm-main-intro" aria-labelledby="lmShortcutTitle">
+    <div class="lm-container">
+        <h2 id="lmShortcutTitle" class="lm-sr-only">카테고리 바로가기</h2>
+        <ul class="lm-shortcut">
+            <li class="lm-shortcut__item"><a class="lm-shortcut__link" href="/product/list.html?cate_no=24"><span class="lm-shortcut__thumb"><img src="/web/upload/lumen/cate_01.jpg" alt="" loading="lazy"/></span><span class="lm-shortcut__name">아우터<small>Outer</small></span></a></li>
+            <li class="lm-shortcut__item"><a class="lm-shortcut__link" href="/product/list.html?cate_no=25"><span class="lm-shortcut__thumb"><img src="/web/upload/lumen/cate_02.jpg" alt="" loading="lazy"/></span><span class="lm-shortcut__name">상의<small>Top</small></span></a></li>
+            <li class="lm-shortcut__item"><a class="lm-shortcut__link" href="/product/list.html?cate_no=26"><span class="lm-shortcut__thumb"><img src="/web/upload/lumen/cate_03.jpg" alt="" loading="lazy"/></span><span class="lm-shortcut__name">하의<small>Bottom</small></span></a></li>
+            <li class="lm-shortcut__item"><a class="lm-shortcut__link" href="/product/list.html?cate_no=27"><span class="lm-shortcut__thumb"><img src="/web/upload/lumen/cate_04.jpg" alt="" loading="lazy"/></span><span class="lm-shortcut__name">가방<small>Bag</small></span></a></li>
+            <li class="lm-shortcut__item"><a class="lm-shortcut__link" href="/product/list.html?cate_no=28"><span class="lm-shortcut__thumb"><img src="/web/upload/lumen/cate_05.jpg" alt="" loading="lazy"/></span><span class="lm-shortcut__name">리빙<small>Living</small></span></a></li>
+            <li class="lm-shortcut__item"><a class="lm-shortcut__link" href="/product/list.html?cate_no=29"><span class="lm-shortcut__thumb"><img src="/web/upload/lumen/cate_06.jpg" alt="" loading="lazy"/></span><span class="lm-shortcut__name">원피스<small>Dress</small></span></a></li>
+        </ul>
+    </div>
+</section>
+<!-- [SECTION 02] END -->
+
+<!-- [SECTION 03] START : NEW ARRIVALS — 관리자 > 상품 > 메인진열 관리 '메인진열 1' -->
+<section class="lm-section" aria-labelledby="lmNewTitle">
+    <div class="lm-container">
+        <div class="lm-section__head">
+            <h2 class="lm-section__title" id="lmNewTitle">New Arrivals<small>이번 주 새로 들어온 상품</small></h2>
+            <a class="lm-link lm-section__more" href="/product/list.html?cate_no=24">전체보기 <svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-arrow-right"></use></svg></a>
+        </div>
+        <div module="product_listmain_1">
+            <!--
+                $count = 8
+                $basket_result = /product/add_basket.html
+                $basket_option = /product/basket_option.html
+            -->
+            <ul class="lm-grid">
+                <li id="anchorBoxId_{$product_no}">
+                    <div class="lm-card">
+                        <div class="lm-card__thumb">
+                            <a class="lm-card__media" href="{$link_product_detail}" name="anchorBoxName_{$product_no}" tabindex="-1" aria-hidden="true">
+                                <img src="{$image_medium}" id="eListPrdImage{$product_no}_{$list_num}" data-lm-hover-src="{$image_small}" alt="" loading="lazy"/>
+                            </a>
+                            <div class="lm-card__badges">{$soldout_icon} {$new_icon} {$recommend_icon} {$product_icons}</div>
+                            <div class="lm-card__actions">
+                                <span class="lm-card__action">{$wish_icon}</span>
+                                <span class="lm-card__action lm-hide-mo">{$basket_icon}</span>
+                            </div>
+                        </div>
+                        <div class="lm-card__info">
+                            <div class="lm-chips">{$color_chip}</div>
+                            <p class="lm-card__name"><a href="{$link_product_detail}">{$product_name}</a></p>
+                            <div class="lm-card__price-row">
+                                <span class="lm-price__rate" data-lm-rate data-price="{$product_price}" data-origin="{$product_custom}"></span>
+                                <ul module="product_ListItem" class="lm-card__items">
+                                    <li class="{$item_display|display}"><strong class="title {$item_title_display|display}">{$item_title}</strong> {$item_content}</li>
+                                    <li class="{$item_display|display}"><strong class="title {$item_title_display|display}">{$item_title}</strong> {$item_content}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li id="anchorBoxId_{$product_no}">
+                    <div class="lm-card">
+                        <div class="lm-card__thumb">
+                            <a class="lm-card__media" href="{$link_product_detail}" name="anchorBoxName_{$product_no}" tabindex="-1" aria-hidden="true">
+                                <img src="{$image_medium}" id="eListPrdImage{$product_no}_{$list_num}" data-lm-hover-src="{$image_small}" alt="" loading="lazy"/>
+                            </a>
+                            <div class="lm-card__badges">{$soldout_icon} {$new_icon} {$recommend_icon} {$product_icons}</div>
+                            <div class="lm-card__actions">
+                                <span class="lm-card__action">{$wish_icon}</span>
+                                <span class="lm-card__action lm-hide-mo">{$basket_icon}</span>
+                            </div>
+                        </div>
+                        <div class="lm-card__info">
+                            <div class="lm-chips">{$color_chip}</div>
+                            <p class="lm-card__name"><a href="{$link_product_detail}">{$product_name}</a></p>
+                            <div class="lm-card__price-row">
+                                <span class="lm-price__rate" data-lm-rate data-price="{$product_price}" data-origin="{$product_custom}"></span>
+                                <ul module="product_ListItem" class="lm-card__items">
+                                    <li class="{$item_display|display}"><strong class="title {$item_title_display|display}">{$item_title}</strong> {$item_content}</li>
+                                    <li class="{$item_display|display}"><strong class="title {$item_title_display|display}">{$item_title}</strong> {$item_content}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- [SECTION 03] END -->
+
+<!-- [SECTION 04] START : 배너 2분할 -->
+<section class="lm-section" aria-label="기획전">
+    <div class="lm-container">
+        <div class="lm-split">
+            <a class="lm-split__item" href="/product/list.html?cate_no=30">
+                <img src="/web/upload/lumen/banner_split_01.jpg" alt="" loading="lazy"/>
+                <div class="lm-split__copy">
+                    <span class="lm-eyebrow">Linen Edit</span>
+                    <p class="lm-split__title">The Linen Edit</p>
+                    <p class="lm-split__desc">계절이 바뀌어도 손이 가는 린넨 컬렉션</p>
+                    <span class="lm-link">기획전 보기 <svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-arrow-right"></use></svg></span>
+                </div>
+            </a>
+            <a class="lm-split__item" href="/product/list.html?cate_no=27">
+                <img src="/web/upload/lumen/banner_split_02.jpg" alt="" loading="lazy"/>
+                <div class="lm-split__copy">
+                    <span class="lm-eyebrow">Leather Goods</span>
+                    <p class="lm-split__title">Carry the Calm</p>
+                    <p class="lm-split__desc">매일 드는 가방, 단단한 가죽으로 — 최대 20% 할인</p>
+                    <span class="lm-link">가방 보기 <svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-arrow-right"></use></svg></span>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+<!-- [SECTION 04] END -->
+
+<!-- [SECTION 05] START : BEST (탭) — 메인진열 2 / 3 / 4 를 탭으로 노출
+     탭을 줄이려면 버튼(role="tab")과 같은 번호의 패널(role="tabpanel")을 함께 삭제 -->
+<section class="lm-section" aria-labelledby="lmBestTitle">
+    <div class="lm-container" data-lm-tabs>
+        <div class="lm-section__head lm-section__head--center">
+            <h2 class="lm-section__title" id="lmBestTitle">Best Sellers<small>지금 가장 많이 찾는 상품</small></h2>
+        </div>
+        <div class="lm-tabs__list" role="tablist" aria-label="베스트 카테고리">
+            <button type="button" class="lm-tabs__tab" role="tab" id="lmBestTab1" aria-controls="lmBestPanel1" aria-selected="true">전체</button>
+            <button type="button" class="lm-tabs__tab" role="tab" id="lmBestTab2" aria-controls="lmBestPanel2" aria-selected="false">의류</button>
+            <button type="button" class="lm-tabs__tab" role="tab" id="lmBestTab3" aria-controls="lmBestPanel3" aria-selected="false">가방·리빙</button>
+        </div>
+
+        <div class="lm-tabs__panel" role="tabpanel" id="lmBestPanel1" aria-labelledby="lmBestTab1">
+            <div module="product_listmain_2">
+                <!--
+                    $count = 4
+                    $basket_result = /product/add_basket.html
+                    $basket_option = /product/basket_option.html
+                -->
+                <ul class="lm-grid">
+                    <li id="anchorBoxId_{$product_no}">
+                        <div class="lm-card">
+                            <div class="lm-card__thumb">
+                                <a class="lm-card__media" href="{$link_product_detail}" tabindex="-1" aria-hidden="true"><img src="{$image_medium}" id="eListPrdImage{$product_no}_{$list_num}" data-lm-hover-src="{$image_small}" alt="" loading="lazy"/></a>
+                                <div class="lm-card__badges">{$soldout_icon} {$new_icon} {$recommend_icon} {$product_icons}</div>
+                                <div class="lm-card__actions"><span class="lm-card__action">{$wish_icon}</span><span class="lm-card__action lm-hide-mo">{$basket_icon}</span></div>
+                            </div>
+                            <div class="lm-card__info">
+                                <div class="lm-chips">{$color_chip}</div>
+                                <p class="lm-card__name"><a href="{$link_product_detail}">{$product_name}</a></p>
+                                <div class="lm-card__price-row">
+                                    <span class="lm-price__rate" data-lm-rate data-price="{$product_price}" data-origin="{$product_custom}"></span>
+                                    <ul module="product_ListItem" class="lm-card__items">
+                                        <li class="{$item_display|display}"><strong class="title {$item_title_display|display}">{$item_title}</strong> {$item_content}</li>
+                                        <li class="{$item_display|display}"><strong class="title {$item_title_display|display}">{$item_title}</strong> {$item_content}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li id="anchorBoxId_{$product_no}">
+                        <div class="lm-card">
+                            <div class="lm-card__thumb">
+                                <a class="lm-card__media" href="{$link_product_detail}" tabindex="-1" aria-hidden="true"><img src="{$image_medium}" id="eListPrdImage{$product_no}_{$list_num}" data-lm-hover-src="{$image_small}" alt="" loading="lazy"/></a>
+                                <div class="lm-card__badges">{$soldout_icon} {$new_icon} {$recommend_icon} {$product_icons}</div>
+                                <div class="lm-card__actions"><span class="lm-card__action">{$wish_icon}</span><span class="lm-card__action lm-hide-mo">{$basket_icon}</span></div>
+                            </div>
+                            <div class="lm-card__info">
+                                <div class="lm-chips">{$color_chip}</div>
+                                <p class="lm-card__name"><a href="{$link_product_detail}">{$product_name}</a></p>
+                                <div class="lm-card__price-row">
+                                    <span class="lm-price__rate" data-lm-rate data-price="{$product_price}" data-origin="{$product_custom}"></span>
+                                    <ul module="product_ListItem" class="lm-card__items">
+                                        <li class="{$item_display|display}"><strong class="title {$item_title_display|display}">{$item_title}</strong> {$item_content}</li>
+                                        <li class="{$item_display|display}"><strong class="title {$item_title_display|display}">{$item_title}</strong> {$item_content}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="lm-tabs__panel" role="tabpanel" id="lmBestPanel2" aria-labelledby="lmBestTab2" hidden>
+            <!-- CHECK: 메인진열 3 이 쇼핑몰에 생성되어 있어야 합니다 (관리자 > 상품 > 메인진열 관리 > 진열 추가) -->
+            <div module="product_listmain_3">
+                <!--
+                    $count = 4
+                    $basket_result = /product/add_basket.html
+                    $basket_option = /product/basket_option.html
+                -->
+                <ul class="lm-grid">
+                    <li id="anchorBoxId_{$product_no}">
+                        <div class="lm-card">
+                            <div class="lm-card__thumb">
+                                <a class="lm-card__media" href="{$link_product_detail}" tabindex="-1" aria-hidden="true"><img src="{$image_medium}" id="eListPrdImage{$product_no}_{$list_num}" data-lm-hover-src="{$image_small}" alt="" loading="lazy"/></a>
+                                <div class="lm-card__badges">{$soldout_icon} {$new_icon} {$recommend_icon} {$product_icons}</div>
+                                <div class="lm-card__actions"><span class="lm-card__action">{$wish_icon}</span><span class="lm-card__action lm-hide-mo">{$basket_icon}</span></div>
+                            </div>
+                            <div class="lm-card__info">
+                                <div class="lm-chips">{$color_chip}</div>
+                                <p class="lm-card__name"><a href="{$link_product_detail}">{$product_name}</a></p>
+                                <div class="lm-card__price-row">
+                                    <span class="lm-price__rate" data-lm-rate data-price="{$product_price}" data-origin="{$product_custom}"></span>
+                                    <ul module="product_ListItem" class="lm-card__items">
+                                        <li class="{$item_display|display}"><strong class="title {$item_title_display|display}">{$item_title}</strong> {$item_content}</li>
+                                        <li class="{$item_display|display}"><strong class="title {$item_title_display|display}">{$item_title}</strong> {$item_content}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li id="anchorBoxId_{$product_no}">
+                        <div class="lm-card">
+                            <div class="lm-card__thumb">
+                                <a class="lm-card__media" href="{$link_product_detail}" tabindex="-1" aria-hidden="true"><img src="{$image_medium}" id="eListPrdImage{$product_no}_{$list_num}" data-lm-hover-src="{$image_small}" alt="" loading="lazy"/></a>
+                                <div class="lm-card__badges">{$soldout_icon} {$new_icon} {$recommend_icon} {$product_icons}</div>
+                                <div class="lm-card__actions"><span class="lm-card__action">{$wish_icon}</span><span class="lm-card__action lm-hide-mo">{$basket_icon}</span></div>
+                            </div>
+                            <div class="lm-card__info">
+                                <div class="lm-chips">{$color_chip}</div>
+                                <p class="lm-card__name"><a href="{$link_product_detail}">{$product_name}</a></p>
+                                <div class="lm-card__price-row">
+                                    <span class="lm-price__rate" data-lm-rate data-price="{$product_price}" data-origin="{$product_custom}"></span>
+                                    <ul module="product_ListItem" class="lm-card__items">
+                                        <li class="{$item_display|display}"><strong class="title {$item_title_display|display}">{$item_title}</strong> {$item_content}</li>
+                                        <li class="{$item_display|display}"><strong class="title {$item_title_display|display}">{$item_title}</strong> {$item_content}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="lm-tabs__panel" role="tabpanel" id="lmBestPanel3" aria-labelledby="lmBestTab3" hidden>
+            <!-- CHECK: 메인진열 4 가 쇼핑몰에 생성되어 있어야 합니다 -->
+            <div module="product_listmain_4">
+                <!--
+                    $count = 4
+                    $basket_result = /product/add_basket.html
+                    $basket_option = /product/basket_option.html
+                -->
+                <ul class="lm-grid">
+                    <li id="anchorBoxId_{$product_no}">
+                        <div class="lm-card">
+                            <div class="lm-card__thumb">
+                                <a class="lm-card__media" href="{$link_product_detail}" tabindex="-1" aria-hidden="true"><img src="{$image_medium}" id="eListPrdImage{$product_no}_{$list_num}" data-lm-hover-src="{$image_small}" alt="" loading="lazy"/></a>
+                                <div class="lm-card__badges">{$soldout_icon} {$new_icon} {$recommend_icon} {$product_icons}</div>
+                                <div class="lm-card__actions"><span class="lm-card__action">{$wish_icon}</span><span class="lm-card__action lm-hide-mo">{$basket_icon}</span></div>
+                            </div>
+                            <div class="lm-card__info">
+                                <div class="lm-chips">{$color_chip}</div>
+                                <p class="lm-card__name"><a href="{$link_product_detail}">{$product_name}</a></p>
+                                <div class="lm-card__price-row">
+                                    <span class="lm-price__rate" data-lm-rate data-price="{$product_price}" data-origin="{$product_custom}"></span>
+                                    <ul module="product_ListItem" class="lm-card__items">
+                                        <li class="{$item_display|display}"><strong class="title {$item_title_display|display}">{$item_title}</strong> {$item_content}</li>
+                                        <li class="{$item_display|display}"><strong class="title {$item_title_display|display}">{$item_title}</strong> {$item_content}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li id="anchorBoxId_{$product_no}">
+                        <div class="lm-card">
+                            <div class="lm-card__thumb">
+                                <a class="lm-card__media" href="{$link_product_detail}" tabindex="-1" aria-hidden="true"><img src="{$image_medium}" id="eListPrdImage{$product_no}_{$list_num}" data-lm-hover-src="{$image_small}" alt="" loading="lazy"/></a>
+                                <div class="lm-card__badges">{$soldout_icon} {$new_icon} {$recommend_icon} {$product_icons}</div>
+                                <div class="lm-card__actions"><span class="lm-card__action">{$wish_icon}</span><span class="lm-card__action lm-hide-mo">{$basket_icon}</span></div>
+                            </div>
+                            <div class="lm-card__info">
+                                <div class="lm-chips">{$color_chip}</div>
+                                <p class="lm-card__name"><a href="{$link_product_detail}">{$product_name}</a></p>
+                                <div class="lm-card__price-row">
+                                    <span class="lm-price__rate" data-lm-rate data-price="{$product_price}" data-origin="{$product_custom}"></span>
+                                    <ul module="product_ListItem" class="lm-card__items">
+                                        <li class="{$item_display|display}"><strong class="title {$item_title_display|display}">{$item_title}</strong> {$item_content}</li>
+                                        <li class="{$item_display|display}"><strong class="title {$item_title_display|display}">{$item_title}</strong> {$item_content}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- [SECTION 05] END -->
+
+<!-- [SECTION 06] START : 룩북 / 에디토리얼 (정적 콘텐츠 — 이미지·문구 직접 수정) -->
+<section class="lm-section lm-section--soft" aria-labelledby="lmLookTitle">
+    <div class="lm-container">
+        <div class="lm-editorial">
+            <div class="lm-editorial__media">
+                <figure><img src="/web/upload/lumen/lookbook_01.jpg" alt="룩북 이미지 1" loading="lazy"/><figcaption>Look 01</figcaption></figure>
+                <figure><img src="/web/upload/lumen/lookbook_02.jpg" alt="룩북 이미지 2" loading="lazy"/><figcaption>Look 02</figcaption></figure>
+            </div>
+            <div class="lm-editorial__copy">
+                <span class="lm-eyebrow">Lookbook — Vol. 07</span>
+                <h2 class="lm-editorial__title" id="lmLookTitle">Between<br/><em>the</em> Seasons</h2>
+                <p class="lm-editorial__desc">아침과 저녁의 온도가 달라지는 계절. 한 겹 걸치고, 한 겹 덜어내는 레이어링으로 하루의 빛을 따라가는 스타일을 제안합니다.</p>
+                <ul class="lm-editorial__list">
+                    <li><span>울 블렌드 싱글 로브 코트</span><span>289,000원</span></li>
+                    <li><span>오버핏 포플린 셔츠</span><span>69,000원</span></li>
+                    <li><span>와이드 플리츠 린넨 팬츠</span><span>79,000원</span></li>
+                </ul>
+                <a class="lm-btn lm-btn--line" href="/board/gallery/list.html?board_no=8">룩북 전체보기</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- [SECTION 06] END -->
+
+<!-- [SECTION 07] START : 인스타그램 그리드
+     정적 이미지 6장 링크 방식입니다. 카페24 앱스토어의 인스타그램 위젯을 쓰는 경우
+     아래 <ul class="lm-insta"> 자리에 위젯 코드를 붙여 넣으세요. -->
+<section class="lm-section" aria-labelledby="lmInstaTitle">
+    <div class="lm-container">
+        <div class="lm-section__head lm-section__head--center">
+            <h2 class="lm-section__title" id="lmInstaTitle">@lumen.studio<small>인스타그램에서 일상을 만나보세요</small></h2>
+        </div>
+        <ul class="lm-insta">
+            <li><a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="인스타그램 게시물 1 (새 창)"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-instagram"></use></svg><img src="/web/upload/lumen/insta_01.jpg" alt="" loading="lazy"/></a></li>
+            <li><a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="인스타그램 게시물 2 (새 창)"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-instagram"></use></svg><img src="/web/upload/lumen/insta_02.jpg" alt="" loading="lazy"/></a></li>
+            <li><a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="인스타그램 게시물 3 (새 창)"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-instagram"></use></svg><img src="/web/upload/lumen/insta_03.jpg" alt="" loading="lazy"/></a></li>
+            <li><a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="인스타그램 게시물 4 (새 창)"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-instagram"></use></svg><img src="/web/upload/lumen/insta_04.jpg" alt="" loading="lazy"/></a></li>
+            <li><a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="인스타그램 게시물 5 (새 창)"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-instagram"></use></svg><img src="/web/upload/lumen/insta_05.jpg" alt="" loading="lazy"/></a></li>
+            <li><a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="인스타그램 게시물 6 (새 창)"><svg class="lm-icon" aria-hidden="true" focusable="false"><use href="#lm-i-instagram"></use></svg><img src="/web/upload/lumen/insta_06.jpg" alt="" loading="lazy"/></a></li>
+        </ul>
+    </div>
+</section>
+<!-- [SECTION 07] END -->
+
+<!-- [SECTION 08] START : 뉴스레터
+     카페24에는 기본 뉴스레터 기능이 없어 회원가입(이메일 수신동의)으로 연결합니다.
+     외부 메일 서비스(스티비 등)를 쓰는 경우 form action 을 해당 주소로 바꾸세요. -->
+<section class="lm-section" aria-labelledby="lmNewsTitle">
+    <div class="lm-container">
+        <div class="lm-newsletter" style="border-top:1px solid var(--c-line)">
+            <span class="lm-eyebrow">Newsletter</span>
+            <h2 class="lm-newsletter__title" id="lmNewsTitle" style="margin-top:14px">Stay in <em>the</em> Light</h2>
+            <p class="lm-newsletter__desc">신상품 소식과 회원 전용 혜택을 가장 먼저 받아보세요.</p>
+            <form class="lm-newsletter__form" action="/member/agreement.html" method="get">
+                <label for="lmNewsEmail" class="lm-sr-only">이메일 주소</label>
+                <input type="email" id="lmNewsEmail" name="email" placeholder="이메일 주소를 입력하세요" required="required"/>
+                <button type="submit">구독하기</button>
+            </form>
+            <p class="lm-newsletter__note">회원가입 시 이메일 수신에 동의하면 소식을 받아보실 수 있습니다.</p>
+        </div>
+    </div>
+</section>
+<!-- [SECTION 08] END -->

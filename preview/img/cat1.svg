@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="600" height="600" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bgcat1.svg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F2EEE9"/>
+      <stop offset="1" stop-color="#ECE6DE"/>
+    </linearGradient>
+    <linearGradient id="shadecat1.svg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fff" stop-opacity=".16"/>
+      <stop offset=".55" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".12"/>
+    </linearGradient>
+    <radialGradient id="glowcat1.svg" cx=".3" cy=".18" r=".7">
+      <stop offset="0" stop-color="#fff" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blurcat1.svg" x="-30%" y="-200%" width="160%" height="500%"><feGaussianBlur stdDeviation="9"/></filter>
+  </defs>
+  <rect width="400" height="400" fill="url(#bgcat1.svg)"/>
+  <circle cx="270" cy="120" r="80" fill="#E2DCD5"/>
+  <rect x="0" y="330" width="400" height="70" fill="#DDD8D0"/>
+  <ellipse cx="200" cy="334" rx="110" ry="8" fill="#000" opacity=".14" filter="url(#blurcat1.svg)"/>
+  <g transform="translate(40 -62) scale(.8)"><path d="M150,122 L180,110 Q200,124 220,110 L250,122 L286,152 L304,360 L278,364 L266,206 L270,424 L130,424 L134,206 L122,364 L96,360 L114,152 Z" fill="#A9845E"/>
+    <path d="M150,122 L180,110 Q200,124 220,110 L250,122 L286,152 L304,360 L278,364 L266,206 L270,424 L130,424 L134,206 L122,364 L96,360 L114,152 Z" fill="url(#shadecat1.svg)"/>
+    <path d="M180,110 L200,214 L220,110" fill="none" stroke="#795F43" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
+    <path d="M200,214 L200,424" fill="none" stroke="#795F43" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
+    <circle cx="206" cy="240" r="4.5" fill="#795F43"/>
+    <circle cx="206" cy="284" r="4.5" fill="#795F43"/>
+    <circle cx="206" cy="328" r="4.5" fill="#795F43"/>
+    <path d="M150,300 L180,300" fill="none" stroke="#795F43" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/></g>
+</svg>
