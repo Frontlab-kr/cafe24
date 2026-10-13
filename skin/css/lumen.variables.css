@@ -1,0 +1,120 @@
+/* ==========================================================================
+   LUMEN — Design Tokens
+   --------------------------------------------------------------------------
+   색상·폰트·간격 등 스킨 전체의 디자인 값은 이 파일 한 곳에서 변경합니다.
+   (Change colors / fonts / spacing for the whole skin here.)
+
+   브레이크포인트 (CSS 변수로는 미디어쿼리를 쓸 수 없어 주석으로 표기)
+     mobile  : ~ 767px
+     tablet  : 768px ~ 1023px
+     desktop : 1024px ~
+   ========================================================================== */
+
+:root {
+  /* ---- Color ---------------------------------------------------------- */
+  --c-ink: #141414;          /* 기본 텍스트, 기본 버튼 */
+  --c-sub: #6B6B6B;          /* 보조 텍스트 */
+  --c-muted: #9C9A95;        /* 비활성/캡션 */
+  --c-line: #E6E4E0;         /* 구분선 */
+  --c-line-strong: #CFCBC4;  /* 입력창 테두리 */
+  --c-bg: #FFFFFF;           /* 기본 배경 */
+  --c-bg-soft: #F6F4F0;      /* 섹션/카드 배경 */
+  --c-bg-deep: #EDE9E2;      /* 이미지 자리 배경 */
+  --c-accent: #B5532F;       /* 테라코타 — 세일/배지/포인트 */
+  --c-accent-soft: #F4E6DF;  /* 포인트 연한 배경 */
+  --c-on-ink: #FFFFFF;       /* 어두운 배경 위 텍스트 */
+  --c-success: #3F6B4F;
+  --c-danger: #B5332F;
+  --c-overlay: rgba(20, 20, 20, .42);
+  --c-focus: #B5532F;
+
+  /* ---- Typography ----------------------------------------------------- */
+  --font-base: "Pretendard", "Pretendard Variable", -apple-system, BlinkMacSystemFont,
+    "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "맑은 고딕", "Segoe UI", sans-serif;
+  /* 영문 헤드라인 전용 */
+  --font-display: "Cormorant Garamond", "Noto Serif KR", Georgia, "Times New Roman", serif;
+
+  --fs-2xs: 11px;
+  --fs-xs: 12px;
+  --fs-sm: 13px;
+  --fs-base: 14px;
+  --fs-md: 15px;
+  --fs-lg: 17px;
+  --fs-xl: 20px;
+  --fs-2xl: 26px;
+  --fs-3xl: 34px;
+  --fs-display: clamp(40px, 6.2vw, 92px);
+  --fs-h-section: clamp(28px, 3.4vw, 44px);
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  --lh-tight: 1.15;
+  --lh-snug: 1.35;
+  --lh-base: 1.6;
+  --ls-wide: .14em;          /* 영문 대문자 라벨 */
+  --ls-tight: -.01em;
+
+  /* ---- Layout --------------------------------------------------------- */
+  --container: 1320px;
+  --gutter: 20px;            /* 모바일 좌우 패딩 */
+  --section-gap: 72px;       /* 섹션 사이 간격 */
+  --grid-gap-x: 12px;
+  --grid-gap-y: 36px;
+  --grid-cols: 2;            /* 상품 목록 열 수 (모바일) */
+
+  --topbar-h: 36px;
+  --header-h: 60px;
+  --header-h-compact: 52px;
+  --tabbar-h: 60px;
+
+  /* ---- Shape ---------------------------------------------------------- */
+  --radius: 0;               /* 각진 미니멀 */
+  --radius-btn: 2px;         /* 버튼만 2px */
+  --ratio-product: 4 / 5;    /* 상품 이미지 비율 */
+  --ratio-hero: 16 / 7;      /* 메인 비주얼 비율 (PC) */
+  --ratio-hero-mo: 4 / 5;    /* 메인 비주얼 비율 (모바일) */
+
+  /* ---- Motion --------------------------------------------------------- */
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --dur-fast: .18s;
+  --dur: .32s;
+  --dur-slow: .7s;
+
+  /* ---- Elevation / Layer --------------------------------------------- */
+  --shadow-sm: 0 1px 2px rgba(20, 20, 20, .06);
+  --shadow-md: 0 10px 30px -12px rgba(20, 20, 20, .18);
+  --z-header: 100;
+  --z-tabbar: 110;
+  --z-dim: 200;
+  --z-drawer: 210;
+  --z-toast: 300;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --gutter: 32px;
+    --section-gap: 96px;
+    --grid-gap-x: 20px;
+    --grid-gap-y: 44px;
+    --grid-cols: 3;
+    --fs-base: 15px;
+    --header-h: 72px;
+    --header-h-compact: 60px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --gutter: 40px;
+    --section-gap: 128px;
+    --grid-gap-x: 24px;
+    --grid-gap-y: 56px;
+    --grid-cols: 4;
+    --header-h: 84px;
+    --header-h-compact: 64px;
+    --tabbar-h: 0px;
+  }
+}
